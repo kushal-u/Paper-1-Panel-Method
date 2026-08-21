@@ -56,58 +56,29 @@
 
 
 
-\author[1,3]{J.K. Krishnan}[type=editor,
-auid=000,bioid=1,
-prefix=Sir,
-role=Researcher,
-orcid=0000-0001-0000-0000]
-\cormark[1]
-\fnmark[1]
-\ead{jkk@example.in}
-\ead[url]{www.jkkrishnan.in}
+\author[1]{Kushal Umamahesh}
+\ead{k.kushalumamahesh.959@cranfield.ac.uk}
 
-\credit{Conceptualization of this study, Methodology, Software}
+\author[1]{Tamás Józsa}
 
-%\address[1]{, Street 129, 1043 NX Amsterdam, The Netherlands}
-\affiliation[1]{organization={Department of Physics, J.K. Institute of Science},
-	addressline={Jawahar Nagar}, 
-	city={Trivandrum},
-	%               citysep={}, % Uncomment if no comma needed between city and postcode
-	postcode={695013}, 
-	state={Kerala},
-	country={India}}
+\affiliation[1]{
+	organization={Centre for Assured and Connected Autonomy, Faculty of Engineering and Applied Sciences, Cranfield University},
+	city={Cranfield},
+	postcode={MK43 0AL},
+	state={Bedfordshire},
+	country={United Kingdom}
+}
 
-\author[2,4]{Han Thane}[style=chinese]
 
-\author[2,3]{William {J. Hansen}}[%
-role=Co-ordinator,
-suffix=Jr,
-]
+
+
 \fnmark[2]
 \ead{wjh@example.org}
 \ead[URL]{https://www.university.org}
 
 \credit{Data curation, Writing - Original draft preparation}
 
-\affiliation[2]{organization={World Scientific University},
-	addressline={Street 29}, 
-	postcode={1011 NX}, 
-	postcodesep={}, 
-	city={Amsterdam},
-	country={The Netherlands}}
 
-\author[1,3]{T. Rafeeq}
-\cormark[2]
-\fnmark[1,3]
-\ead{t.rafeeq@example.in}
-\ead[URL]{www.campus.in}
-
-\affiliation[3]{organization={University of Intelligent Studies},
-	addressline={Street 15}, 
-	city={Jabaldesh},
-	postcode={825001}, 
-	state={Orissa}, 
-	country={India}}
 
 \cortext[cor1]{Corresponding author}
 \cortext[cor2]{Principal corresponding author}
@@ -161,45 +132,43 @@ suffix=Jr,
 \label{subsec:overall_framework}
 
 A two-dimensional steady aero--hydraulic framework was developed to
-evaluate the aerodynamic behaviour of airfoils containing passive
-internal channels. The external flow is modelled using an
-incompressible, inviscid and irrotational source--vortex panel method,
-while the pressure-driven flow through each internal passage is
-described using the Hagen--Poiseuille and Darcy--Weisbach relations for
-circular channels. The two models are coupled through the pressure and
-surface-normal velocity at the channel openings.
+investigate the aerodynamic behaviour of airfoils containing passive
+internal pores. The external flow is modelled using an incompressible, inviscid and irrotational source--vortex panel method, while the pressure-driven flow through each internal passage is evaluated using the Hagen--Poiseuille and Darcy--Weisbach relations, selected according to the Reynolds number of the flow within the circular pore. The aerodynamic and hydraulic models are coupled through the pressure and surface-normal velocity at the pore openings.
 
-The external aerodynamic solution determines the pressure difference
-between the two openings of each channel. This pressure difference
-drives the internal flow, which subsequently modifies the aerodynamic
-boundary condition through a surface-normal transpiration velocity.
-The external pressure field and internal channel flow are therefore
-determined as a coupled aero--hydraulic system.
+For each pore, the external aerodynamic solution provides the pressure
+at both ends of the pore. The resulting pressure difference drives flow
+through the internal passage from the higher-pressure end towards the
+lower-pressure end. This internal flow introduces suction at
+one end and blowing at the other, which are represented in the
+panel method through surface-normal transpiration velocities. The
+modified boundary condition then changes the external velocity and
+pressure fields, which in turn affect the pressure difference driving
+the pore flow. The external and internal flows are therefore solved as
+a coupled aero--hydraulic system.
 
-The calculation is initialised using an impermeable-airfoil solution,
-for which the surface-normal transpiration velocity is set to zero.
-The resulting surface pressures provide the initial pressure differences
-across the internal passages and, consequently, the initial estimates
-of the channel flow rates. The aerodynamic and hydraulic solutions are
-then coupled until a consistent pressure and channel-flow solution is
-obtained. Converged solutions are retained for aerodynamic and
-internal-flow analysis, whereas non-converged cases are reported as
-\texttt{NaN}.
+The calculation begins from the corresponding impermeable (solid) airfoil solution, with the surface-normal transpiration velocity initially set to zero. The resulting surface pressures provide the initial pressure
+differences across the pores and hence the initial internal flow rates.
+The aerodynamic solution, pore pressure differences and transpiration
+velocities are then updated iteratively until a consistent coupled
+solution is obtained. This procedure is applied independently to each
+of the investigated pore heights, $H=8$, $9$ and $10~\mathrm{mm}$,
+and the converged aerodynamic and internal-flow quantities are retained
+for analysis.
 
-The external aerodynamic formulation assumes steady, incompressible,
-inviscid and irrotational flow. Consequently, boundary-layer
-development, skin-friction drag, flow separation and stall are not
-resolved. The predicted drag coefficient therefore represents only the
-pressure-drag contribution obtained from the potential-flow solution.
+The aerodynamic model assumes steady, incompressible, inviscid and
+irrotational flow. It therefore does not resolve boundary-layer
+development, skin-friction drag, flow separation or stall. Consequently,
+the predicted drag coefficient represents only the pressure-drag
+contribution obtained from the potential-flow solution.
 
 The numerical procedure is summarised in
 Fig.~\ref{fig:coupled_iteration_loop}.
-
 
 \begin{figure}
 	\centering
 	
 	\begin{tikzpicture}[
+		font=\normalfont\normalsize,
 		node distance=4.5mm,
 		process/.style={
 			rectangle,
@@ -209,17 +178,7 @@ Fig.~\ref{fig:coupled_iteration_loop}.
 			align=center,
 			text width=0.72\linewidth,
 			minimum height=8mm,
-			inner sep=3pt,
-			font=\footnotesize
-		},
-		decision/.style={
-			diamond,
-			draw,
-			thick,
-			align=center,
-			aspect=2.1,
-			inner sep=1.5pt,
-			font=\footnotesize
+			inner sep=3pt
 		},
 		output/.style={
 			rectangle,
@@ -228,10 +187,9 @@ Fig.~\ref{fig:coupled_iteration_loop}.
 			rounded corners=3pt,
 			thick,
 			align=center,
-			text width=0.31\linewidth,
-			minimum height=12mm,
-			inner sep=3pt,
-			font=\footnotesize
+			text width=0.62\linewidth,
+			minimum height=10mm,
+			inner sep=3pt
 		},
 		arrow/.style={
 			-{Latex[length=1.8mm]},
@@ -239,7 +197,11 @@ Fig.~\ref{fig:coupled_iteration_loop}.
 		}
 		]
 		
-		\node[process] (init)
+		\node[process] (height)
+		{Select pore height\\
+			$H=8,\;9,\;10~\mathrm{mm}$};
+		
+		\node[process, below=of height] (init)
 		{Initialise with zero transpiration\\
 			$v_{n,i}^{(0)}=0$};
 		
@@ -247,54 +209,40 @@ Fig.~\ref{fig:coupled_iteration_loop}.
 		{Solve source--vortex panel system};
 		
 		\node[process, below=of panel] (pressure)
-		{Compute surface and opening pressures\\
-			$p_i,\;p_{1,k},\;p_{2,k}$};
-		
-		\node[process, below=of pressure] (dp)
-		{Determine channel pressure difference\\
+		{Compute pressure difference across each pore\\
 			$\Delta p_k=p_{1,k}-p_{2,k}$};
 		
-		\node[process, below=of dp] (flow)
-		{Solve internal channel-flow model\\
+		\node[process, below=of pressure] (flow)
+		{Solve internal pore-flow model\\
 			to obtain $Q_k$ and $Re_{D,k}$};
 		
 		\node[process, below=of flow] (update)
-		{Determine surface-normal velocities\\
-			at the channel openings};
+		{Update surface-normal velocities\\
+			at the pore openings};
 		
-		\node[decision, below=6mm of update] (converged)
-		{Converged?};
+		\node[process, below=of update] (iterate)
+		{Iterate aero--hydraulic coupling\\
+			until convergence};
 		
-		\node[output, below left=7mm and 1mm of converged] (nan)
-		{Report NaN};
+		\node[output, below=of iterate] (results)
+		{Report $C_p$, $C_L$, $C_{D,p}$, $C_M$,\\
+			$Q$, $\Delta p$ and $Re_D$};
 		
-		\node[output, below right=7mm and 1mm of converged] (results)
-		{Report $C_p$, $C_L$, $C_{D,p}$,\\
-			$C_M$, $Q$, $\Delta p$, $Re_D$};
-		
+		\draw[arrow] (height) -- (init);
 		\draw[arrow] (init) -- (panel);
 		\draw[arrow] (panel) -- (pressure);
-		\draw[arrow] (pressure) -- (dp);
-		\draw[arrow] (dp) -- (flow);
+		\draw[arrow] (pressure) -- (flow);
 		\draw[arrow] (flow) -- (update);
-		\draw[arrow] (update) -- (converged);
-		
-		\draw[arrow]
-		(converged.west)
-		-- node[above left,font=\footnotesize] {no}
-		(nan.north);
-		
-		\draw[arrow]
-		(converged.east)
-		-- node[above right,font=\footnotesize] {yes}
-		(results.north);
+		\draw[arrow] (update) -- (iterate);
+		\draw[arrow] (iterate) -- (results);
 		
 	\end{tikzpicture}
 	
-	\caption{Coupled aero--hydraulic solution procedure.}
+	\caption{{\normalfont\normalsize
+			Coupled aero--hydraulic solution procedure applied to
+			the investigated pore heights.}}
 	\label{fig:coupled_iteration_loop}
 \end{figure}
-
 
 % ============================================================
 % GEOMETRY
@@ -310,21 +258,17 @@ near the leading and trailing edges.
 
 Each aerodynamic panel $i$ is characterised by its length $S_i$,
 control point $(x_i,y_i)$, unit tangent vector
-
 \begin{equation}
 	\boldsymbol{t}_i
 	=
 	(t_{x,i},t_{y,i}),
 \end{equation}
-
 and outward unit normal vector
-
 \begin{equation}
 	\boldsymbol{n}_i
 	=
 	(n_{x,i},n_{y,i}).
 \end{equation}
-
 The porous structure is represented by passive circular channels
 connecting pairs of openings on the airfoil surface. No prescribed
 mass-flow rate or external pumping mechanism is imposed. Instead, the
@@ -427,22 +371,18 @@ passage connecting them.
 The external flow is assumed to be incompressible, inviscid and
 irrotational. The velocity field can therefore be expressed in terms
 of a scalar velocity potential,
-
 \begin{equation}
 	\boldsymbol{V}
 	=
 	\nabla\Phi.
 \end{equation}
-
 Application of mass conservation gives Laplace's equation,
-
 \begin{equation}
 	\nabla^2\Phi
 	=
 	0.
 	\label{eq:laplace}
 \end{equation}
-
 The numerical solution is constructed by superposing the uniform
 freestream with constant-strength source distributions over the
 airfoil surface and a single constant vortex strength distributed
@@ -455,7 +395,6 @@ introduces the circulation required to generate lift.
 
 For an airfoil discretised into $N$ panels, the aerodynamic unknowns
 are the $N$ source strengths
-
 \begin{equation}
 	\boldsymbol{\lambda}
 	=
@@ -463,7 +402,6 @@ are the $N$ source strengths
 	\lambda_1,\lambda_2,\ldots,\lambda_N
 	\right]^{\mathrm T}
 \end{equation}
-
 and the global vortex strength $\gamma$.
 
 The normal and tangential source influence coefficients are denoted by
@@ -473,7 +411,6 @@ represent the corresponding vortex influence coefficients.
 For an impermeable airfoil, the normal velocity at every control point
 is zero. To represent a porous opening, this condition is modified by
 prescribing a surface-normal transpiration velocity $v_{n,i}$,
-
 \begin{equation}
 	\boldsymbol{V}_i
 	\cdot
@@ -482,16 +419,12 @@ prescribing a surface-normal transpiration velocity $v_{n,i}$,
 	v_{n,i}.
 	\label{eq:porous_normal_bc}
 \end{equation}
-
 The conventional impermeable boundary condition is recovered when
-
 \begin{equation}
 	v_{n,i}=0.
 \end{equation}
-
 Following discretisation, the normal boundary condition for panel $i$
 becomes
-
 \begin{equation}
 	\pi\lambda_i
 	+
@@ -506,14 +439,12 @@ becomes
 	2\pi v_{n,i},
 	\label{eq:normal_panel_equation}
 \end{equation}
-
 where $\beta_i$ denotes the angle between the local panel normal and
 the freestream direction.
 
 The trailing-edge Kutta condition is imposed by requiring the
 tangential velocities on the first and final panels to be equal in
 magnitude and opposite in direction,
-
 \begin{equation}
 	V_{t,1}
 	+
@@ -522,10 +453,8 @@ magnitude and opposite in direction,
 	0.
 	\label{eq:kutta}
 \end{equation}
-
 The $N$ normal boundary conditions together with the Kutta condition
 produce an $(N+1)\times(N+1)$ linear system,
-
 \begin{equation}
 	\begin{bmatrix}
 		\boldsymbol{A}_{\lambda}
@@ -547,7 +476,6 @@ produce an $(N+1)\times(N+1)$ linear system,
 	\end{bmatrix}.
 	\label{eq:panel_matrix}
 \end{equation}
-
 The influence matrix depends only on the discretised airfoil geometry.
 It is therefore assembled and LU-factorised once for each geometry,
 while the right-hand side is updated according to the freestream
@@ -558,7 +486,6 @@ condition and surface-normal transpiration velocity.
 
 Following solution of the panel system, the tangential velocity on
 panel $i$ is evaluated as
-
 \begin{equation}
 	V_{t,i}
 	=
@@ -573,10 +500,8 @@ panel $i$ is evaluated as
 	\sum_{j=1}^{N}L_{ij}.
 	\label{eq:tangential_velocity}
 \end{equation}
-
 At a porous opening, the local surface velocity contains both
 tangential and normal components. The velocity magnitude is therefore
-
 \begin{equation}
 	V_i^2
 	=
@@ -585,10 +510,8 @@ tangential and normal components. The velocity magnitude is therefore
 	v_{n,i}^{2}.
 	\label{eq:surface_velocity_magnitude}
 \end{equation}
-
 The pressure coefficient is obtained from the steady incompressible
 Bernoulli equation,
-
 \begin{equation}
 	C_{p,i}
 	=
@@ -600,9 +523,7 @@ Bernoulli equation,
 	{V_{\infty}^{2}}.
 	\label{eq:pressure_coefficient}
 \end{equation}
-
 The corresponding absolute pressure is
-
 \begin{equation}
 	p_i
 	=
@@ -626,29 +547,24 @@ The corresponding absolute pressure is
 The internal flow through each porous passage is modelled as
 pressure-driven flow through a circular channel. For channel $k$ with
 diameter $D_k$, the cross-sectional area is
-
 \begin{equation}
 	A_k
 	=
 	\frac{\pi D_k^2}{4}.
 	\label{eq:channel_area}
 \end{equation}
-
 The mean internal velocity is related to the volumetric flow rate by
-
 \begin{equation}
 	\overline{U}_k
 	=
 	\frac{Q_k}{A_k},
 	\label{eq:mean_channel_velocity}
 \end{equation}
-
 where $Q_k~[\mathrm{m^3\,s^{-1}}]$ is the volumetric flow rate
 through the channel.
 
 The internal flow is driven by the pressure difference between the two
 surface openings,
-
 \begin{equation}
 	\Delta p_k
 	=
@@ -657,10 +573,8 @@ surface openings,
 	p_{2,k}.
 	\label{eq:channel_pressure_difference}
 \end{equation}
-
 The sign of $\Delta p_k$ determines the direction of the internal
 flow. The corresponding channel Reynolds number is
-
 \begin{equation}
 	Re_{D,k}
 	=
@@ -671,10 +585,8 @@ flow. The corresponding channel Reynolds number is
 	{\mu_{\infty}}.
 	\label{eq:internal_reynolds}
 \end{equation}
-
 For fully developed laminar flow through a circular channel, the
 pressure-driven flow is described by the Hagen--Poiseuille equation,
-
 \begin{equation}
 	Q_k
 	=
@@ -684,13 +596,11 @@ pressure-driven flow is described by the Hagen--Poiseuille equation,
 	\Delta p_k.
 	\label{eq:hagen_poiseuille}
 \end{equation}
-
 This formulation naturally accounts for the direction of flow through
 the sign of $\Delta p_k$.
 
 The pressure loss can equivalently be expressed using the
 Darcy--Weisbach relation,
-
 \begin{equation}
 	|\Delta p_k|
 	=
@@ -702,18 +612,15 @@ Darcy--Weisbach relation,
 	{2},
 	\label{eq:darcy_weisbach}
 \end{equation}
-
 where $f_k$ is the Darcy friction factor.
 
 For fully developed laminar flow through a circular pipe,
-
 \begin{equation}
 	f_{\mathrm{lam},k}
 	=
 	\frac{64}{Re_{D,k}}.
 	\label{eq:laminar_friction_factor}
 \end{equation}
-
 The Hagen--Poiseuille and Darcy--Weisbach formulations are therefore
 equivalent for fully developed laminar flow through the circular
 channels considered here.
@@ -733,7 +640,6 @@ The pressure at each channel opening is obtained from the aerodynamic
 surface-pressure distribution. When an opening intersects multiple
 panels, its pressure is evaluated using a length-weighted average over
 the corresponding surface footprint. For opening $m$ of channel $k$,
-
 \begin{equation}
 	p_{m,k}
 	=
@@ -749,12 +655,10 @@ the corresponding surface footprint. For opening $m$ of channel $k$,
 	m=1,2,
 	\label{eq:opening_pressure}
 \end{equation}
-
 where $\mathcal{P}_{m,k}$ denotes the set of panels intersected by the
 opening and $\ell_i$ is the corresponding overlap length.
 
 The two opening pressures provide the channel pressure difference,
-
 \begin{equation}
 	\Delta p_k
 	=
@@ -762,24 +666,20 @@ The two opening pressures provide the channel pressure difference,
 	-
 	p_{2,k},
 \end{equation}
-
 which is supplied to the internal-flow model to determine $Q_k$.
 
 The mean velocity through each circular opening is
-
 \begin{equation}
 	U_{\mathrm{open},k}
 	=
 	\frac{Q_k}{A_k}.
 	\label{eq:opening_velocity}
 \end{equation}
-
 This velocity is imposed on the external aerodynamic model as a
 surface-normal transpiration velocity. With the outward panel normal
 defined as positive, flow entering the airfoil is assigned a negative
 normal velocity, whereas flow leaving the airfoil is assigned a
 positive normal velocity,
-
 \begin{equation}
 	v_{n,k}^{\mathrm{in}}
 	=
@@ -790,7 +690,6 @@ positive normal velocity,
 	+\frac{Q_k}{A_k}.
 	\label{eq:opening_transpiration}
 \end{equation}
-
 When an opening intersects multiple aerodynamic panels, the prescribed
 normal velocity is applied over the corresponding opening footprint so
 that the transpiration boundary condition is represented consistently
@@ -818,7 +717,6 @@ convergence requirement are reported as \texttt{NaN}.
 The aerodynamic forces are obtained by integrating the pressure
 contribution over the discretised airfoil surface. The contribution of
 panel $i$ to the global Cartesian force coefficients is
-
 \begin{align}
 	\mathrm d C_{x,i}
 	&=
@@ -833,9 +731,7 @@ panel $i$ to the global Cartesian force coefficients is
 	\frac{S_i}{c}.
 	\label{eq:dcy}
 \end{align}
-
 The total Cartesian force coefficients are
-
 \begin{equation}
 	C_x
 	=
@@ -847,10 +743,8 @@ The total Cartesian force coefficients are
 	\sum_{i=1}^{N}
 	\mathrm d C_{y,i}.
 \end{equation}
-
 Rotation into the freestream-aligned coordinate system gives the lift
 and pressure-drag coefficients,
-
 \begin{align}
 	C_L
 	&=
@@ -865,18 +759,14 @@ and pressure-drag coefficients,
 	C_y\sin\alpha.
 	\label{eq:cd}
 \end{align}
-
 The pitching-moment coefficient is evaluated about the quarter-chord
 reference location,
-
 \begin{equation}
 	(x_{\mathrm{ref}},y_{\mathrm{ref}})
 	=
 	(0.25c,0),
 \end{equation}
-
 using
-
 \begin{equation}
 	C_M
 	=
@@ -890,11 +780,9 @@ using
 	{c}.
 	\label{eq:cm}
 \end{equation}
-
 For diagnostic comparison, an additional lift coefficient is
 calculated from the solved circulation using the Kutta--Joukowski
 relationship,
-
 \begin{equation}
 	C_{L,\Gamma}
 	=
@@ -921,49 +809,38 @@ impermeable-airfoil pressure distribution and angle-of-attack response.
 
 Unless otherwise stated, the calculations are performed for a
 NACA~0018 airfoil with chord
-
 \begin{equation}
 	c
 	=
 	1~\mathrm{m},
 \end{equation}
-
 discretised using $N=1000$ panels.
 
 The freestream fluid properties are
-
 \begin{equation}
 	\rho_{\infty}
 	=
 	1.225~\mathrm{kg\,m^{-3}},
 \end{equation}
-
 \begin{equation}
 	\mu_{\infty}
 	=
 	1.8\times10^{-5}~\mathrm{Pa\,s},
 \end{equation}
-
 and
-
 \begin{equation}
 	p_{\infty}
 	=
 	101325~\mathrm{Pa}.
 \end{equation}
-
 A chord Reynolds number of
-
 \begin{equation}
 	Re_c
 	=
 	5.0\times10^5
 \end{equation}
-
 is prescribed.
-
 The corresponding freestream velocity is calculated from
-
 \begin{equation}
 	V_{\infty}
 	=
@@ -972,26 +849,21 @@ The corresponding freestream velocity is calculated from
 	{\rho_{\infty}c}.
 	\label{eq:freestream_velocity}
 \end{equation}
-
 The principal fixed-angle analysis is performed at
-
 \begin{equation}
 	\alpha
 	=
 	4^\circ.
 \end{equation}
-
 The angle-of-attack sweep extends from $-5^\circ$ to $15^\circ$ in
 increments of $1^\circ$.
 
 Circular channel diameters of
-
 \begin{equation}
 	D
 	=
 	8,\;9,\;\text{and}\;10~\mathrm{mm}
 \end{equation}
-
 are considered.
 
 Each angle of attack is solved independently, and the solution from the
@@ -1281,7 +1153,7 @@ for the three porous configurations.
 	\includegraphics[
 	width=0.62\textwidth
 	]{figs/pressure_difference_pa_portrait_one_colorbar.png}
-	\caption{
+	\caption{{\normalfont\normalsize
 		Pressure-field difference between the porous and
 		impermeable airfoils at $\alpha=10^\circ$ and
 		$D=9~\mathrm{mm}$ for
@@ -1291,7 +1163,7 @@ for the three porous configurations.
 		Positive values indicate an increase in pressure relative
 		to the impermeable airfoil, while negative values indicate
 		a reduction.
-	}
+	}}
 	\label{fig:pressure_difference}
 \end{figure*}
 
@@ -1355,17 +1227,17 @@ channels, giving an overall response closer to the impermeable airfoil.
 	\includegraphics[
 	width=0.62\textwidth
 	]{figs/velocity_difference_percent_portrait_one_colorbar.png}
-	\caption{
+	\caption{{\normalfont\normalsize
 		Difference in velocity magnitude between the porous and
 		impermeable-airfoil solutions at $\alpha=10^\circ$ and
 		$D=9~\mathrm{mm}$ for
 		(a) the horizontal model (M1),
 		(b) the vertical model (M2), and
 		(c) the combined horizontal--vertical model (M3).
-		Positive values indicate an increase in velocity magnitude
-		and negative values indicate a reduction relative to the
+		Positive values indicate an increase in velocity magnitude,
+		while negative values indicate a reduction relative to the
 		impermeable solution.
-	}
+	}}
 	\label{fig:velocity_difference}
 \end{figure*}
 
