@@ -26,13 +26,88 @@
 %\usepackage[authoryear]{natbib}
 \usepackage[numbers]{natbib}
 
-% Packages required by the numerical-methodology flowchart
+% ------------------------------------------------------------
+% Figures and TikZ
+% ------------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
-\usepackage{graphicx}
-\usepackage{capt-of}
-\graphicspath{{figs/}}
+
 \usepackage{float}
+
+% ------------------------------------------------------------
+% Equation spacing
+% ------------------------------------------------------------
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
+\setlength{\textfloatsep}{3.5pt}
+\setlength{\intextsep}{3.5pt}
+
+% ------------------------------------------------------------
+% Figure-caption font
+% Make captions match the main document font and size
+% ------------------------------------------------------------
+\usepackage{etoolbox}
+
+\ExplSyntaxOn
+
+\patchcmd{\__make_fig_caption:nn}
+{\sffamily\small}
+{\normalfont\normalsize}
+{}{}
+
+\patchcmd{\__make_fig_caption:nn}
+{\sffamily\small}
+{\normalfont\normalsize}
+{}{}
+
+\patchcmd{\__make_fig_caption:nn}
+{\sffamily\small}
+{\normalfont\normalsize}
+{}{}
+
+\ExplSyntaxOff
+% ------------------------------------------------------------
+% Figure caption formatting for Elsevier cas-dc
+% ------------------------------------------------------------
+\ExplSyntaxOn
+
+\cs_set:Npn \__make_fig_caption:nn #1#2
+{
+	\l_fig_align_tl
+	\skip_vertical:N \l_fig_abovecap_skip
+	
+	\setbox\cascaptionbox=\hbox{
+		\normalfont\normalsize
+		#1:~#2
+	}
+	
+	\ifdim\the\wd\cascaptionbox<\dim_use:N\l_fig_width_dim\relax
+	\parbox{\l_fig_width_dim}{
+		\unskip\ignorespaces
+		\hfil
+		\normalfont\normalsize
+		#1:~#2
+		\hfil\par
+	}
+	\else
+	\parbox{\l_fig_width_dim}{
+		\rightskip=0pt
+		\unskip\ignorespaces
+		\normalfont\normalsize
+		#1:~#2
+		\par
+	}
+	\fi
+	
+	\skip_vertical:N \l_fig_belowcap_skip
+}
+
+\ExplSyntaxOff
 
 %%%Author definitions
 \def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
@@ -49,7 +124,7 @@
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
 \shorttitle{Leveraging social media news}
-\shortauthors{J.K. Krishnan et~al.}
+\shortauthors{K Umamahesh et~al.}
 
 \title [mode = title]{This is a specimen $a_b$ title}                      
 \tnotemark[1,2]
@@ -160,10 +235,8 @@ irrotational flow. It therefore does not resolve boundary-layer
 development, skin-friction drag, flow separation or stall. Consequently,
 the predicted drag coefficient represents only the pressure-drag
 contribution obtained from the potential-flow solution.
-
 The numerical procedure is summarised in
-Fig.~\ref{fig:coupled_iteration_loop}.
-
+Figure.~\ref{fig:coupled_iteration_loop}.
 \begin{figure}
 	\centering
 	
@@ -243,18 +316,12 @@ Fig.~\ref{fig:coupled_iteration_loop}.
 			the investigated pore heights.}}
 	\label{fig:coupled_iteration_loop}
 \end{figure}
-
-% ============================================================
-% GEOMETRY
-% ============================================================
-
 \subsection{Airfoil geometry and porous configurations}
 \label{subsec:airfoil_porous_geometry}
 
 The baseline geometry is a NACA~0018 airfoil with chord $c$. The
 NACA four-digit coordinates are generated analytically and discretised
-using cosine spacing along the chord, providing increased panel density
-near the leading and trailing edges.
+using cosine spacing along the chord.
 
 Each aerodynamic panel $i$ is characterised by its length $S_i$,
 control point $(x_i,y_i)$, unit tangent vector
@@ -269,40 +336,37 @@ and outward unit normal vector
 	=
 	(n_{x,i},n_{y,i}).
 \end{equation}
-The porous structure is represented by passive circular channels
-connecting pairs of openings on the airfoil surface. No prescribed
+The porous structure is represented by passive circular pores formed as internal channels connecting selected locations on the airfoil surface. No prescribed
 mass-flow rate or external pumping mechanism is imposed. Instead, the
 magnitude and direction of the internal flow are determined entirely
 by the aerodynamic pressure difference between the two surface
 openings.
 
-Three porous configurations are considered:
+Three porous-airfoil configurations are considered:
 
 \begin{enumerate}
 	
-	\item \textbf{Horizontal model (M1):}
-	four independent chordwise passages, with two channels located above
-	and two below the chord line. Both openings of each passage are
-	located on the same airfoil surface.
+	\item \textbf{Horizontal porous airfoil:}
+	four independent chordwise pores are arranged with two located above
+	and two below the chord line. Both ends of each pore are located on
+	the same airfoil surface.
 	
-	\item \textbf{Vertical model (M2):}
-	four independent lower-to-upper passages distributed between
-	$x/c=0.1$ and $x/c=0.9$.
+	\item \textbf{Vertical porous airfoil:}
+	four independent pores connect the lower and upper airfoil surfaces
+	and are distributed between $x/c=0.1$ and $x/c=0.9$.
 	
-	\item \textbf{Combined independent model (M3):}
-	the horizontal and vertical passages are superposed, resulting in
-	eight internal channels. Although the channels may cross geometrically
-	in the two-dimensional representation, they do not physically intersect
-	or form internal junctions. Each passage remains hydraulically
+	\item \textbf{Horizontal--vertical porous airfoil:}
+	the horizontal and vertical pore arrangements are combined, resulting
+	in eight internal pores. Although the pores may cross geometrically
+	in the two-dimensional representation, they do not physically
+	intersect or form internal junctions. Each pore remains hydraulically
 	independent, and no flow is exchanged between the horizontal and
-	vertical channels.
+	vertical passages.
 	
 \end{enumerate}
 
 The three porous-airfoil configurations considered in the present
-study are illustrated in Fig.~\ref{fig:porous_models}.
-
-
+study are illustrated in Figure.~\ref{fig:porous_models}.
 \begin{figure}
 	\centering
 	
@@ -311,7 +375,8 @@ study are illustrated in Fig.~\ref{fig:porous_models}.
 	
 	\vspace{1mm}
 	
-	{\small \textbf{(a)} Horizontal model (M1)}
+	{\normalfont\normalsize
+		\textbf{(a)} Horizontal porous airfoil}
 	
 	\vspace{3mm}
 	
@@ -320,7 +385,8 @@ study are illustrated in Fig.~\ref{fig:porous_models}.
 	
 	\vspace{1mm}
 	
-	{\small \textbf{(b)} Vertical model (M2)}
+	{\normalfont\normalsize
+		\textbf{(b)} Vertical porous airfoil}
 	
 	\vspace{3mm}
 	
@@ -329,31 +395,30 @@ study are illustrated in Fig.~\ref{fig:porous_models}.
 	
 	\vspace{1mm}
 	
-	{\small \textbf{(c)} Combined independent model (M3)}
+	{\normalfont\normalsize
+		\textbf{(c)} Horizontal--vertical porous airfoil}
 	
 	\caption{
 		Porous-airfoil configurations considered in the present study:
-		(a) horizontal model (M1),
-		(b) vertical model (M2), and
-		(c) combined independent model (M3).
+		(a) horizontal porous airfoil,
+		(b) vertical porous airfoil, and
+		(c) horizontal--vertical porous airfoil.
 	}
 	\label{fig:porous_models}
 \end{figure}
-
-
-The positions of the surface openings are obtained by interpolation of
-the upper and lower airfoil surfaces rather than by restricting their
-locations to panel control points. This preserves the prescribed
-orientation and position of the internal passages independently of the
-aerodynamic panel resolution.
+The pore locations are mapped onto the upper and lower airfoil surfaces, allowing the prescribed
+pore positions to be specified independently of the discrete panel
+control points. This preserves the intended position and orientation of
+the internal passages without requiring them to coincide with specific
+panel locations.
 
 The channel geometry is checked before the coupled calculation to
 ensure that the openings remain within the permitted chordwise region,
 do not overlap, fit within the local airfoil thickness and satisfy the
 specified minimum separation.
 
-Each passage $k$ is characterised by a diameter $D_k$ and a
-centreline length $L_k$. The channel length is determined from the
+Each pore $k$ is characterised by a height $H_k$ and a
+centreline length $L_k$. The pore length is determined from the
 geometry of the two corresponding surface openings and the internal
 passage connecting them.
 
@@ -383,12 +448,14 @@ Application of mass conservation gives Laplace's equation,
 	0.
 	\label{eq:laplace}
 \end{equation}
-The numerical solution is constructed by superposing the uniform
-freestream with constant-strength source distributions over the
-airfoil surface and a single constant vortex strength distributed
-around the complete airfoil boundary. The source distributions
-represent the airfoil thickness, while the global vortex strength
-introduces the circulation required to generate lift.
+The external-flow solution is obtained by superposing the uniform
+freestream with constant-strength source panels distributed along the
+airfoil surface and a single uniform vortex-sheet strength applied over
+the entire airfoil boundary. The source strength on each panel is
+determined by enforcing the normal-velocity boundary condition at the
+corresponding control point. The source panels represent the effect of
+the airfoil thickness, while the global vortex strength provides the
+circulation required to generate lift.
 
 
 \subsubsection{Source--vortex panel formulation}
@@ -409,7 +476,7 @@ $I_{ij}$ and $J_{ij}$, respectively, while $K_{ij}$ and $L_{ij}$
 represent the corresponding vortex influence coefficients.
 
 For an impermeable airfoil, the normal velocity at every control point
-is zero. To represent a porous opening, this condition is modified by
+is zero. To represent a pore opening, this condition is modified by
 prescribing a surface-normal transpiration velocity $v_{n,i}$,
 \begin{equation}
 	\boldsymbol{V}_i
@@ -419,7 +486,8 @@ prescribing a surface-normal transpiration velocity $v_{n,i}$,
 	v_{n,i}.
 	\label{eq:porous_normal_bc}
 \end{equation}
-The conventional impermeable boundary condition is recovered when
+For an impermeable airfoil, the surface-normal velocity is zero,
+such that
 \begin{equation}
 	v_{n,i}=0.
 \end{equation}
@@ -541,90 +609,56 @@ The corresponding absolute pressure is
 % INTERNAL FLOW MODEL
 % ============================================================
 
-\subsection{Internal channel-flow model}
-\label{subsec:internal_channel_flow}
+\subsection{Internal pore-flow model}
+\label{subsec:internal_pore_flow}
 
-The internal flow through each porous passage is modelled as
-pressure-driven flow through a circular channel. For channel $k$ with
-diameter $D_k$, the cross-sectional area is
+The internal flow through each pore is modelled as pressure-driven flow
+between parallel walls. Each pore $k$ is characterised by a pore height
+$H_k$ and a centreline length $L_k$. Consistent with the two-dimensional
+formulation, the flow is evaluated per unit span, with a hydraulic
+diameter
 \begin{equation}
-	A_k
-	=
-	\frac{\pi D_k^2}{4}.
-	\label{eq:channel_area}
+	D_{h,k}=2H_k.
 \end{equation}
-The mean internal velocity is related to the volumetric flow rate by
+The flow is driven by the pressure difference between the two ends of
+the pore,
 \begin{equation}
-	\overline{U}_k
-	=
-	\frac{Q_k}{A_k},
-	\label{eq:mean_channel_velocity}
+	\Delta p_k=p_{1,k}-p_{2,k}.
+	\label{eq:pore_pressure_difference}
 \end{equation}
-where $Q_k~[\mathrm{m^3\,s^{-1}}]$ is the volumetric flow rate
-through the channel.
-
-The internal flow is driven by the pressure difference between the two
-surface openings,
+A positive or negative value of $\Delta p_k$ therefore determines the
+direction of flow through the pore. The mean internal velocity is
+related to the volumetric flow rate per unit span, $q'_k$, by
 \begin{equation}
-	\Delta p_k
-	=
-	p_{1,k}
-	-
-	p_{2,k}.
-	\label{eq:channel_pressure_difference}
+	\overline{U}_k=\frac{q'_k}{H_k}.
 \end{equation}
-The sign of $\Delta p_k$ determines the direction of the internal
-flow. The corresponding channel Reynolds number is
+The corresponding pore Reynolds number is
 \begin{equation}
-	Re_{D,k}
+	Re_{h,k}
 	=
-	\frac{
-		\rho_{\infty}
-		|\overline{U}_k|
-		D_k}
+	\frac{\rho_{\infty}|\overline{U}_k|D_{h,k}}
 	{\mu_{\infty}}.
-	\label{eq:internal_reynolds}
+	\label{eq:pore_reynolds}
 \end{equation}
-For fully developed laminar flow through a circular channel, the
-pressure-driven flow is described by the Hagen--Poiseuille equation,
-\begin{equation}
-	Q_k
-	=
-	\frac{
-		\pi D_k^4}
-	{128\mu_{\infty}L_k}
-	\Delta p_k.
-	\label{eq:hagen_poiseuille}
-\end{equation}
-This formulation naturally accounts for the direction of flow through
-the sign of $\Delta p_k$.
-
-The pressure loss can equivalently be expressed using the
+The pressure loss through the pore is calculated using the
 Darcy--Weisbach relation,
 \begin{equation}
 	|\Delta p_k|
 	=
 	f_k
-	\frac{L_k}{D_k}
-	\frac{
-		\rho_{\infty}
-		\overline{U}_k^2}
-	{2},
+	\frac{L_k}{D_{h,k}}
+	\frac{\rho_{\infty}\overline{U}_k^{\,2}}{2},
 	\label{eq:darcy_weisbach}
 \end{equation}
-where $f_k$ is the Darcy friction factor.
+where $f_k$ is the Darcy friction factor. For laminar flow between
+parallel walls, $f_k=96/Re_{h,k}$. At higher Reynolds numbers, the
+Blasius correlation is used, with a smooth transition between the two
+relations over $2000<Re_{h,k}<3000$.
 
-For fully developed laminar flow through a circular pipe,
-\begin{equation}
-	f_{\mathrm{lam},k}
-	=
-	\frac{64}{Re_{D,k}}.
-	\label{eq:laminar_friction_factor}
-\end{equation}
-The Hagen--Poiseuille and Darcy--Weisbach formulations are therefore
-equivalent for fully developed laminar flow through the circular
-channels considered here.
-
+For a given pressure difference, the resulting pressure-loss relation
+is solved to determine the internal flow rate. The calculated flow is
+then used to obtain the surface-normal transpiration velocity imposed
+on the external aerodynamic solution.
 
 % ============================================================
 % COUPLING
@@ -633,20 +667,22 @@ channels considered here.
 \subsection{Aero--hydraulic coupling}
 \label{subsec:aero_hydraulic_coupling}
 
-The aerodynamic and internal-flow models are coupled through the
-pressure and surface-normal velocity at the channel openings.
+The external aerodynamic and internal pore-flow models are coupled
+through the surface pressure and the normal velocity imposed at the two
+ends of each pore.
 
-The pressure at each channel opening is obtained from the aerodynamic
-surface-pressure distribution. When an opening intersects multiple
-panels, its pressure is evaluated using a length-weighted average over
-the corresponding surface footprint. For opening $m$ of channel $k$,
+The pressure at each end of a pore is obtained from the aerodynamic
+surface-pressure distribution. For a prescribed pore height, the
+corresponding surface panels are identified from the aerodynamic
+discretisation, and their pressure values are used to determine the
+pressure associated with that end. For end $m$ of pore $k$,
 \begin{equation}
 	p_{m,k}
 	=
 	\frac{
 		\displaystyle
 		\sum_{i\in\mathcal{P}_{m,k}}
-		p_i\ell_i}
+		p_i \ell_i}
 	{
 		\displaystyle
 		\sum_{i\in\mathcal{P}_{m,k}}
@@ -655,57 +691,52 @@ the corresponding surface footprint. For opening $m$ of channel $k$,
 	m=1,2,
 	\label{eq:opening_pressure}
 \end{equation}
-where $\mathcal{P}_{m,k}$ denotes the set of panels intersected by the
-opening and $\ell_i$ is the corresponding overlap length.
+where $\mathcal{P}_{m,k}$ represents the panels covered by the pore
+end and $\ell_i$ is the corresponding overlap length.
 
-The two opening pressures provide the channel pressure difference,
+The pressure difference across each pore is then
 \begin{equation}
 	\Delta p_k
 	=
-	p_{1,k}
-	-
-	p_{2,k},
+	p_{1,k}-p_{2,k},
+	\label{eq:coupling_pressure_difference}
 \end{equation}
-which is supplied to the internal-flow model to determine $Q_k$.
-
-The mean velocity through each circular opening is
+which provides the driving pressure for the internal pore-flow model.
+The resulting flow rate per unit span, $q'_k$, gives the mean velocity
+through the pore as
 \begin{equation}
-	U_{\mathrm{open},k}
+	\overline{U}_k
 	=
-	\frac{Q_k}{A_k}.
-	\label{eq:opening_velocity}
+	\frac{q'_k}{H_k}.
+	\label{eq:pore_transpiration_velocity}
 \end{equation}
-This velocity is imposed on the external aerodynamic model as a
-surface-normal transpiration velocity. With the outward panel normal
-defined as positive, flow entering the airfoil is assigned a negative
-normal velocity, whereas flow leaving the airfoil is assigned a
-positive normal velocity,
+This velocity is introduced into the aerodynamic model as a
+surface-normal transpiration velocity. With the outward surface normal
+defined as positive, flow entering the pore is assigned a negative
+normal velocity, while flow leaving the pore is assigned a positive
+normal velocity,
 \begin{equation}
 	v_{n,k}^{\mathrm{in}}
 	=
-	-\frac{Q_k}{A_k},
+	-\overline{U}_k,
 	\qquad
 	v_{n,k}^{\mathrm{out}}
 	=
-	+\frac{Q_k}{A_k}.
-	\label{eq:opening_transpiration}
+	+\overline{U}_k.
+	\label{eq:pore_transpiration}
 \end{equation}
-When an opening intersects multiple aerodynamic panels, the prescribed
-normal velocity is applied over the corresponding opening footprint so
-that the transpiration boundary condition is represented consistently
-by the discretised airfoil surface.
+When a pore end extends across several panels, the transpiration
+condition is applied over the corresponding surface region rather than
+at a single panel control point.
 
-The updated surface-normal velocity modifies the panel-method boundary
-condition and therefore changes the external pressure distribution.
-The new opening pressures are subsequently supplied to the
-internal-flow model, and the aerodynamic and hydraulic solutions are
-coupled until the channel flow used to impose the opening velocity is
-consistent with that predicted from the resulting pressure difference.
-
-A case is classified as converged when the prescribed coupling
-criterion is satisfied for all channels. Cases that do not satisfy the
-convergence requirement are reported as \texttt{NaN}.
-
+The imposed normal velocity alters the external flow and therefore the
+surface-pressure distribution. This changes the pressure difference
+driving the internal pore flow, which in turn updates the transpiration
+velocity. The aerodynamic and pore-flow solutions are therefore
+updated iteratively until the pressure difference and internal flow are
+consistent with one another. This procedure is repeated independently
+for each pore height considered in the study, and all reported cases
+reached a converged coupled solution.
 
 % ============================================================
 % AERODYNAMIC COEFFICIENTS
@@ -801,80 +832,59 @@ relationship,
 \subsection{Numerical setup}
 \label{subsec:numerical_setup}
 
-The aerodynamic response of each porous configuration is evaluated
-relative to an impermeable reference airfoil using the same geometry,
-panel discretisation and operating conditions. An inviscid XFOIL
-solution may additionally be used for comparison of the
-impermeable-airfoil pressure distribution and angle-of-attack response.
+The aerodynamic performance of each porous configuration is compared
+with that of the corresponding impermeable airfoil under the same
+geometry, panel discretisation and operating conditions. An inviscid
+XFOIL solution is also used as an additional reference to compare the
+impermeable-airfoil pressure distribution and its variation with angle
+of attack.
 
-Unless otherwise stated, the calculations are performed for a
-NACA~0018 airfoil with chord
-\begin{equation}
-	c
-	=
-	1~\mathrm{m},
-\end{equation}
-discretised using $N=1000$ panels.
+Unless otherwise stated, all calculations are performed for a
+NACA~0018 airfoil using the numerical and freestream conditions
+summarised in Table~\ref{tab:numerical_setup}.
 
-The freestream fluid properties are
-\begin{equation}
-	\rho_{\infty}
-	=
-	1.225~\mathrm{kg\,m^{-3}},
-\end{equation}
-\begin{equation}
-	\mu_{\infty}
-	=
-	1.8\times10^{-5}~\mathrm{Pa\,s},
-\end{equation}
-and
-\begin{equation}
-	p_{\infty}
-	=
-	101325~\mathrm{Pa}.
-\end{equation}
-A chord Reynolds number of
-\begin{equation}
-	Re_c
-	=
-	5.0\times10^5
-\end{equation}
-is prescribed.
-The corresponding freestream velocity is calculated from
+\begin{table}
+	\centering
+	\caption{{\normalfont\normalsize Numerical and operating conditions used in the present study.}}
+	\label{tab:numerical_setup}
+	
+	{\normalfont\normalsize
+		\begin{tabular}{lll}
+			\hline
+			\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+			\hline
+			
+			Airfoil & -- & NACA~0018 \\
+			Chord length & $c$ & $1~\mathrm{m}$ \\
+			Number of panels & $N$ & $1000$ \\
+			Fluid density & $\rho_{\infty}$ & $1.225~\mathrm{kg\,m^{-3}}$ \\
+			Dynamic viscosity & $\mu_{\infty}$ &
+			$1.8\times10^{-5}~\mathrm{Pa\,s}$ \\
+			Freestream pressure & $p_{\infty}$ & $101325~\mathrm{Pa}$ \\
+			Chord Reynolds number & $Re_c$ & $5.0\times10^{5}$ \\
+			Principal angle of attack & $\alpha$ & $4^\circ$ \\
+			Angle-of-attack range & $\alpha$ & $-5^\circ$ to $15^\circ$ \\
+			Angle-of-attack increment & $\Delta\alpha$ & $1^\circ$ \\
+			Pore height & $H$ & $8,\;9,\;10~\mathrm{mm}$ \\
+			
+			\hline
+		\end{tabular}
+	}
+\end{table}
+The freestream velocity is determined from the prescribed chord
+Reynolds number as
 \begin{equation}
 	V_{\infty}
 	=
-	\frac{
-		Re_c\mu_{\infty}}
+	\frac{Re_c\mu_{\infty}}
 	{\rho_{\infty}c}.
 	\label{eq:freestream_velocity}
 \end{equation}
-The principal fixed-angle analysis is performed at
-\begin{equation}
-	\alpha
-	=
-	4^\circ.
-\end{equation}
-The angle-of-attack sweep extends from $-5^\circ$ to $15^\circ$ in
-increments of $1^\circ$.
-
-Circular channel diameters of
-\begin{equation}
-	D
-	=
-	8,\;9,\;\text{and}\;10~\mathrm{mm}
-\end{equation}
-are considered.
-
 Each angle of attack is solved independently, and the solution from the
 preceding angle is not used to initialise the subsequent case.
 % ============================================================
 % END NUMERICAL METHODOLOGY
 % ============================================================
-% ============================================================
-% RESULTS
-% ============================================================
-
 % ============================================================
 % RESULTS AND DISCUSSION
 % ============================================================
@@ -882,63 +892,56 @@ preceding angle is not used to initialise the subsequent case.
 \section{Results and discussion}
 \label{sec:results_discussion}
 
-The aerodynamic response of the three porous airfoil configurations was
-investigated over an angle-of-attack range of $-5^\circ$ to
-$15^\circ$. Three pore heights,
-$D=8$, $9$ and $10~\mathrm{mm}$, were considered for the horizontal
-(M1), vertical (M2) and combined horizontal--vertical (M3)
-configurations. The corresponding impermeable (solid airfoil) panel-method solution, 
-and the inviscid XFOIL prediction are included as reference cases.
+The aerodynamic behaviour of the three porous-airfoil configurations
+was investigated over an angle-of-attack range of $-5^\circ$ to
+$15^\circ$. Three pore heights, $H=8$, $9$ and $10~\mathrm{mm}$,
+were considered for the horizontal, vertical and horizontal--vertical
+porous airfoils. The corresponding impermeable (solid) airfoil
+panel-method solution and the inviscid XFOIL prediction are included as
+reference cases.
 
-The influence of the porous channels is first assessed using the
-integrated lift and pitching-moment coefficients. The resulting
-aerodynamic trends are then related to changes in the external pressure
-and velocity fields. The flow-field comparison is presented for
-$\alpha=10^\circ$ and $D=9~\mathrm{mm}$.
+The effect of the pores is first examined through the lift and
+moment coefficients over the angle-of-attack range. The observed aerodynamic trends are then
+interpreted using the corresponding pressure and velocity field
+differences. A detailed flow-field comparison is presented at
+$\alpha=10^\circ$ for a pore height of $H=9~\mathrm{mm}$.
 
 
 % ============================================================
 % BASELINE VALIDATION
 % ============================================================
 
-\subsection{Baseline aerodynamic validation}
-\label{subsec:baseline_validation}
+\subsection{Panel method validation against XFOIL}
+\label{subsec:Panel_method_validation_against_XFOIL}
 
-The impermeable source vortex panel solution is compared with the
-corresponding inviscid XFOIL prediction in
+The impermeable source--vortex panel-method solution is compared with
+the corresponding inviscid XFOIL prediction in
 Figs.~\ref{fig:cl_aoa_three_models} and
-\ref{fig:cm_aoa_three_models}. The two approaches show similar
-angle-of-attack trends for both lift and pitching moment over the
-investigated range.
+\ref{fig:cm_aoa_three_models}. Both methods show similar trends in lift
+and pitching moment over the investigated angle-of-attack range.
 
-The agreement between the two impermeable-airfoil solutions provides
-a reference for evaluating the aerodynamic changes introduced by the
-internal channels. Small differences between the panel-method and
-XFOIL predictions are expected because the two methods employ
-different numerical formulations, although both represent inviscid
-external flow.
+This agreement provides a useful reference for assessing the aerodynamic
+effects introduced by the pores. Small differences between the
+panel-method and XFOIL predictions are expected because the two
+approaches use different numerical formulations, although both represent
+inviscid external flow.
 
-The impermeable panel solution is therefore used as the primary
-reference when evaluating the effect of the porous configurations,
-ensuring that the porous and solid cases are compared using the same
-panel discretisation aerodynamic formulation.
-
-Although the horizontal and vertical channels are physically separate
-and hydraulically independent, their aerodynamic effects interact
-through the external pressure field.
-
+The impermeable panel-method solution is therefore used as the primary
+reference when evaluating the porous-airfoil configurations. This
+ensures that the porous and solid airfoils are compared using the same
+geometry, panel discretisation, aerodynamic formulation and operating
+conditions.
 
 % ============================================================
 % LIFT
 % ============================================================
 
-\subsection{Effect of porous-channel configuration on lift}
+\subsection{Effect of pores on lift}
 \label{subsec:lift_results}
 
 Figure~\ref{fig:cl_aoa_three_models} compares the variation of lift
-coefficient with angle of attack for the three porous configurations
-and channel diameters.
-
+coefficient with angle of attack for the three porous-airfoil
+configurations and pore heights.
 \begin{figure*}
 	\centering
 	\includegraphics[
@@ -946,165 +949,172 @@ and channel diameters.
 	]{figs/CL_vs_AoA_three_models_three_diameters.png}
 	\caption{
 		Lift coefficient as a function of angle of attack for
-		(a) the horizontal model (M1),
-		(b) the vertical model (M2), and
-		(c) the combined horizontal--vertical model (M3).
-		Results are shown for circular-channel diameters
-		$D=8$, $9$ and $10~\mathrm{mm}$ together with the
-		impermeable panel-method and XFOIL reference solutions.
+		(a) the horizontal porous airfoil,
+		(b) the vertical porous airfoil, and
+		(c) the horizontal--vertical porous airfoil.
+		Results are shown for pore heights
+		$H=8$, $9$ and $10~\mathrm{mm}$ together with the
+		impermeable panel-method and inviscid XFOIL reference
+		solutions.
 	}
 	\label{fig:cl_aoa_three_models}
 \end{figure*}
-
-The horizontal configuration produces the largest change in lift.
-At positive angles of attack, M1 develops a higher lift coefficient
-than the impermeable reference, with the difference increasing as the
-angle of attack increases. The effect also becomes stronger with
-channel diameter, with the $D=10~\mathrm{mm}$ configuration producing
-the highest lift at larger positive angles of attack. A corresponding
-increase in the magnitude of negative lift is observed at negative
-angles of attack, giving an approximately antisymmetric response
+The horizontal porous airfoil produces the largest change in lift.
+At positive angles of attack, its lift coefficient is higher than that
+of the impermeable reference, and the difference becomes more
+pronounced as the angle of attack increases. The effect also strengthens
+with pore height, with $H=10~\mathrm{mm}$ producing the highest lift
+at larger positive angles of attack. At negative angles of attack,
+increasing the pore height similarly increases the magnitude of the
+negative lift.This nearly symmetric lift response about the zero-lift condition is
 consistent with the symmetric NACA~0018 geometry.
 
-For M1, both openings of each channel are located on the same airfoil
-surface. The streamwise pressure variation therefore generates a
-pressure difference between the two openings and drives internal flow
-from the locally higher-pressure location towards the lower-pressure
-location. Suction at one opening and blowing at the other redistribute
-the external velocity and pressure along the surface. At positive angle
-of attack, the different pressure distributions on the upper and lower
-surfaces cause this redistribution to produce a net increase in the
-aerodynamic loading and hence lift.
+For the horizontal configuration, both ends of each pore are located on
+the same airfoil surface. The streamwise variation in surface pressure
+therefore creates a pressure difference between the two ends and drives
+internal flow from the locally higher-pressure region towards the
+lower-pressure region. This produces suction at one end and blowing at
+the other, changing the local surface-normal velocity and redistributing
+the external pressure and velocity fields along the airfoil surface.
+At positive angle of attack, the different pressure distributions over
+the suction and pressure surfaces lead to a net redistribution of
+aerodynamic loading that increases lift.
 
-The stronger diameter dependence of M1 is consistent with the reduction
-in hydraulic resistance as the channel diameter increases. A larger
-diameter permits a greater internal flow for a given pressure
-difference, strengthening the interaction between the channel flow and
-the external aerodynamic field.
+The stronger dependence on pore height is consistent with the reduction
+in hydraulic resistance as the pore becomes larger. For a given pressure
+difference, a larger pore height permits a greater internal flow and
+therefore a stronger interaction between the pore flow and the external
+aerodynamic field.
 
-The vertical configuration exhibits a distinctly different behaviour.
-At positive angles of attack, the lift coefficient is generally lower
-than that of the impermeable airfoil, while the three diameter cases
-remain relatively close over most of the angle-of-attack range.
+The vertical porous airfoil shows a distinctly different behaviour.
+At positive angles of attack, its lift coefficient is generally lower
+than that of the impermeable airfoil, while the three pore-height cases
+remain relatively close over most of the investigated range.
 
-In M2, each channel connects the higher-pressure lower surface to the
-lower-pressure upper surface. The resulting pressure difference drives
-flow from the pressure surface towards the suction surface. This
-cross-surface transfer partially reduces the pressure difference
-responsible for lift, which is consistent with the lower lift
-coefficient obtained for the vertical configuration. The relatively
-small separation between the diameter cases indicates that M2 is less
-sensitive to channel diameter than M1.
+In this configuration, each pore connects the  pressure
+surface to the suction surface. The resulting pressure
+difference drives internal flow between the two surfaces and partially
+reduces the pressure difference responsible for lift. This pressure
+equalisation is consistent with the lower lift coefficient obtained for
+the vertical porous airfoil. The small separation between the
+pore-height cases also indicates that this configuration is less
+sensitive to pore height than the horizontal arrangement.
 
-The combined horizontal--vertical configuration remains comparatively
-close to the impermeable reference. At positive angles of attack, its
-lift coefficient is generally slightly lower than the solid-airfoil
-solution, and the three diameter cases remain closely grouped.
+The horizontal--vertical porous airfoil remains comparatively close to
+the impermeable reference. At positive angles of attack, its lift
+coefficient is generally slightly lower than that of the solid airfoil,
+and the three pore-height cases remain closely grouped.
 
-This response reflects the simultaneous action of the two channel
-arrangements. The horizontal passages redistribute flow between
-different chordwise locations on the same surface, whereas the vertical
-passages transfer flow between the pressure and suction surfaces.
-Consequently, the lift-enhancing redistribution associated with the
-horizontal passages is partly offset by the pressure equalisation
-introduced by the vertical passages.
+This behaviour reflects the simultaneous influence of the horizontal
+and vertical pore arrangements. The horizontal pores redistribute flow
+between different chordwise locations on the same surface, whereas the
+vertical pores transfer flow between the pressure and suction surfaces.
+The lift-enhancing redistribution associated with the horizontal pores
+is therefore partly offset by the pressure equalisation introduced by
+the vertical pores.
 
-The horizontal and vertical channels in M3 are physically separate and
-hydraulically independent; however, their aerodynamic effects interact
-through the external pressure field. Changes produced by one set of
-channels alter the surface pressures that drive the other set, so the
-combined response is not a simple superposition of M1 and M2.
+The horizontal and vertical pores remain physically separate and
+hydraulically independent. However, their aerodynamic effects interact
+through the external pressure field, since changes produced by one set
+of pores alter the surface pressures that drive the other set.
+Consequently, the response of the horizontal--vertical porous airfoil is
+not a simple superposition of the two individual configurations.
 
-Overall, the lift results demonstrate that channel orientation and the
-pressure difference between the connected surface locations have a
-stronger influence on aerodynamic performance than channel diameter
-alone. M1 produces the largest lift enhancement and the strongest
-diameter dependence, whereas M2 and M3 exhibit considerably weaker
-sensitivity.
-
+Overall, the results show that the aerodynamic effect of the pores is
+governed mainly by their orientation, placement and the pressure
+difference between the connected surface locations. Pore height also
+influences the response, but its effect is strongest for the horizontal
+configuration and considerably weaker for the vertical and
+horizontal--vertical arrangements.
 % ============================================================
 % PITCHING MOMENT
 % ============================================================
 
-\subsection{Effect of porous-channel configuration on pitching moment}
+\subsection{Effect of pores on pitching moment}
 \label{subsec:moment_results}
 
-The corresponding quarter-chord pitching-moment coefficients are
-presented in Fig.~\ref{fig:cm_aoa_three_models}.
-
+The corresponding moment coefficients are
+presented in Figure.~\ref{fig:cm_aoa_three_models}.
 \begin{figure*}
 	\centering
+	
 	\includegraphics[
 	width=0.96\textwidth
 	]{figs/CM_vs_AoA_three_models_three_diameters.png}
+	
 	\caption{
 		Pitching-moment coefficient about the quarter chord as a
 		function of angle of attack for
-		(a) the horizontal model (M1),
-		(b) the vertical model (M2), and
-		(c) the combined horizontal--vertical model (M3).
-		Results are shown for circular-channel diameters
-		$D=8$, $9$ and $10~\mathrm{mm}$ together with the
-		impermeable panel-method and XFOIL reference solutions.
+		(a) the horizontal porous airfoil,
+		(b) the vertical porous airfoil, and
+		(c) the horizontal--vertical porous airfoil.
+		Results are shown for pore heights
+		$H=8$, $9$ and $10~\mathrm{mm}$ together with the
+		impermeable panel-method and inviscid XFOIL reference solutions.
 	}
+	
 	\label{fig:cm_aoa_three_models}
 \end{figure*}
-
-The horizontal configuration produces the largest departure from the
+The horizontal porous airfoil produces the largest departure from the
 impermeable-airfoil response. As the positive angle of attack
 increases, the pitching-moment coefficient becomes progressively more
-negative, with the magnitude of the change increasing with channel
-diameter. The $D=10~\mathrm{mm}$ configuration therefore produces the
-largest negative pitching moment at higher positive angles of attack.
+negative. The magnitude of this change also increases with pore height,
+with $H=10~\mathrm{mm}$ producing the largest negative pitching moment
+at higher positive angles of attack.
 
-This behaviour reflects the chordwise redistribution of aerodynamic
-loading produced by M1. Because the two openings of each horizontal
-channel are located at different chordwise positions, the pressure
-changes associated with suction and blowing act at different distances
-from the quarter-chord reference point. The resulting changes in local
-loading therefore generate an additional pitching moment. Increasing
-the channel diameter strengthens the internal flow and consequently
-increases this chordwise redistribution.
+This behaviour is associated with the chordwise redistribution of
+aerodynamic loading produced by the horizontal pores. Since the two ends
+of each pore are located at different chordwise positions on the same
+surface, the pressure changes associated with the internal flow act at
+different distances from the quarter-chord reference point. These local
+changes in loading therefore contribute differently to the pitching
+moment. Increasing the pore height strengthens the internal flow and
+the resulting pressure redistribution, leading to a larger change in
+the pitching-moment coefficient.
 
-The lift enhancement produced by M1 is therefore accompanied by a
-larger negative pitching moment. This represents an important
-aerodynamic trade-off, since the configuration that provides the
-largest increase in lift also produces the greatest change in the
-longitudinal moment characteristics.
+The increase in lift obtained with the horizontal porous airfoil is
+therefore accompanied by a larger negative pitching moment. This
+represents an important aerodynamic trade-off, since the configuration
+that provides the greatest lift enhancement also produces the largest
+change in longitudinal loading.
 
-The vertical configuration produces substantially smaller changes in
-pitching moment, and the three diameter cases remain closely grouped
-throughout most of the angle-of-attack range. This is consistent with
-the weaker diameter dependence observed in the lift results.
+The vertical porous airfoil produces considerably smaller changes in
+pitching moment, and the three pore-height cases remain closely grouped
+over most of the investigated angle-of-attack range. This behaviour is
+consistent with the weaker dependence on pore height observed in the
+lift results.
 
-For M2, the upper and lower openings of each vertical channel are
-located at approximately the same chordwise position. The resulting
-pressure redistribution therefore occurs predominantly between the two
-airfoil surfaces rather than between widely separated chordwise
-locations. Consequently, the associated change in moment arm is smaller
-than for M1, resulting in a weaker pitching-moment response.
+For the vertical configuration, the two ends of each pore are positioned
+on the upper and lower surfaces at approximately the same chordwise
+location. The resulting pressure redistribution therefore occurs mainly
+between the pressure and suction surfaces rather than between widely
+separated positions along the chord. The corresponding change in
+chordwise loading is smaller than for the horizontal pores, resulting
+in a weaker pitching-moment response.
 
-The combined configuration exhibits an intermediate behaviour. The
-pitching moment becomes increasingly negative with positive angle of
-attack, although the departure from the impermeable solution remains
-smaller than for M1. The influence of channel diameter also becomes
-more apparent at higher positive angles of attack.
+The horizontal--vertical porous airfoil exhibits behaviour between that
+of the individual horizontal and vertical configurations. The pitching
+moment becomes increasingly negative with positive angle of attack,
+although the departure from the impermeable-airfoil solution remains
+smaller than for the horizontal porous airfoil. The influence of pore
+height also becomes more noticeable at higher positive angles of attack.
 
-In M3, the horizontal passages redistribute loading between different
-chordwise positions, while the vertical passages primarily redistribute
-pressure between the upper and lower surfaces. Although the two channel
-systems remain physically separate and hydraulically independent,
-their aerodynamic effects interact through the external pressure field.
-The resulting pitching-moment behaviour therefore reflects the combined
-influence of these two loading mechanisms.
+In this configuration, the horizontal pores redistribute loading
+between different chordwise positions, while the vertical pores mainly
+redistribute pressure between the upper and lower surfaces. The two pore
+arrangements remain physically separate and hydraulically independent,
+but their aerodynamic effects interact through the external pressure
+field. The resulting pitching-moment response therefore reflects the
+combined influence of these two loading mechanisms.
 
-Overall, the pitching-moment results demonstrate that the aerodynamic
-effect of the porous channels depends not only on the magnitude of the
-pressure redistribution but also on its chordwise location. M1 produces
-the largest moment change because its passages redistribute loading
-between spatially separated chordwise positions, whereas M2 produces a
-smaller response because its pressure redistribution occurs mainly
-between the upper and lower surfaces at similar chordwise locations.
+Overall, the pitching-moment results show that the effect of the pores
+depends not only on the magnitude of the pressure redistribution but
+also on where that redistribution occurs along the chord. The
+horizontal porous airfoil produces the largest moment change because
+its pores alter the loading between spatially separated chordwise
+locations, whereas the vertical porous airfoil produces a smaller
+response because its pressure redistribution occurs predominantly
+between the upper and lower surfaces at similar chordwise positions.
 
 
 % ============================================================
@@ -1114,19 +1124,19 @@ between the upper and lower surfaces at similar chordwise locations.
 \subsection{Flow-field characteristics of porous airfoils}
 \label{subsec:flowfield_results}
 
-To examine the mechanisms responsible for the changes in the integrated
-aerodynamic coefficients, the pressure and velocity fields of the porous
-airfoils are compared with the corresponding impermeable-airfoil
-solution at
+To better understand the changes observed in lift and pitching moment,
+the pressure and velocity fields of the porous airfoils are compared
+with those of the corresponding impermeable airfoil. The comparison is
+presented at
 
 \begin{equation}
 	\alpha=10^\circ,
 	\qquad
-	D=9~\mathrm{mm}.
+	H=9~\mathrm{mm}.
 \end{equation}
 
 This condition represents a positive angle of attack at which the
-aerodynamic influence of the porous channels is clearly developed.
+influence of the pores on the external flow is clearly visible.
 
 
 % ============================================================
@@ -1135,7 +1145,8 @@ aerodynamic influence of the porous channels is clearly developed.
 
 \subsubsection{Pressure-field characteristics}
 
-Figure~\ref{fig:pressure_difference} shows the pressure difference
+Figure~\ref{fig:pressure_difference} presents the pressure difference
+between the porous and impermeable airfoils,
 
 \begin{equation}
 	\Delta p
@@ -1146,7 +1157,7 @@ Figure~\ref{fig:pressure_difference} shows the pressure difference
 	\label{eq:pressure_field_difference}
 \end{equation}
 
-for the three porous configurations.
+for the three pore arrangements.
 
 \begin{figure*}
 	\centering
@@ -1154,67 +1165,66 @@ for the three porous configurations.
 	width=0.62\textwidth
 	]{figs/pressure_difference_pa_portrait_one_colorbar.png}
 	\caption{{\normalfont\normalsize
-		Pressure-field difference between the porous and
-		impermeable airfoils at $\alpha=10^\circ$ and
-		$D=9~\mathrm{mm}$ for
-		(a) the horizontal model (M1),
-		(b) the vertical model (M2), and
-		(c) the combined horizontal--vertical model (M3).
-		Positive values indicate an increase in pressure relative
-		to the impermeable airfoil, while negative values indicate
-		a reduction.
+			Pressure-field difference between the porous and
+			impermeable airfoils at $\alpha=10^\circ$ and
+			$H=9~\mathrm{mm}$ for
+			(a) the horizontal porous airfoil,
+			(b) the vertical porous airfoil, and
+			(c) the horizontal--vertical porous airfoil.
+			Positive values indicate an increase in pressure relative
+			to the impermeable airfoil, while negative values indicate
+			a reduction.
 	}}
 	\label{fig:pressure_difference}
 \end{figure*}
 
-The difference field is used instead of the absolute pressure
-distribution to isolate the aerodynamic changes introduced by the
-porous channels. In the absolute field, the dominant pressure gradients
-associated with the baseline airfoil, particularly near the leading
-edge, can obscure the comparatively local influence of the channel
-flow. The difference contours therefore provide a clearer indication
-of the location, magnitude and sign of the pressure redistribution.
+The pressure difference is shown instead of the absolute pressure field
+to isolate the changes introduced by the pores. In the absolute
+solution, the pressure distribution is dominated by the overall
+airfoil loading and the strong pressure gradients near the leading
+edge. Subtracting the impermeable-airfoil solution makes the local
+changes associated with the pore flow easier to identify.
 
-The strongest pressure differences occur near the channel openings,
-where neighbouring regions of positive and negative $\Delta p$ form a
-dipole-like pressure signature. This behaviour results from the local
-suction and blowing associated with the two ends of a pressure-driven
-channel, which perturb the external flow in opposite directions.
+The largest pressure differences occur close to the pore ends. In
+several regions, adjacent positive and negative values of $\Delta p$
+produce a dipole-like pressure pattern. This behaviour is associated
+with suction at one end of a pore and blowing at the other, which alter
+the local external flow in opposite ways and create neighbouring
+regions of increased and reduced pressure.
 
-The aerodynamic significance of $\Delta p$ depends on the surface on
-which it occurs. At positive angle of attack, a negative $\Delta p$ on
-the upper suction surface increases the suction and therefore tends to
-increase lift, whereas a positive $\Delta p$ reduces the suction and
-tends to decrease lift. On the lower pressure surface, the opposite
-applies: a positive $\Delta p$ contributes positively to lift, while a
-negative value reduces the pressure loading.
+The influence of these pressure changes on lift depends on the surface
+on which they occur. At positive angle of attack, a reduction in
+pressure on the upper suction surface strengthens the suction and tends
+to increase lift, whereas an increase in pressure weakens the suction.
+On the lower pressure surface, an increase in pressure contributes
+positively to lift, while a reduction in pressure has the opposite
+effect.
 
-For M1, the pressure changes remain predominantly localised around the
-chordwise channel openings. Since each passage connects two locations
-on the same surface, the paired positive and negative regions represent
-a redistribution of pressure along the chord. Although these
-disturbances are local, their combined effect increases the pressure
-difference between the upper and lower surfaces, consistent with the
-larger lift coefficient obtained for the horizontal configuration.
+For the horizontal porous airfoil, the pressure changes are mainly
+concentrated around the chordwise pore ends. Since both ends of each
+pore lie on the same airfoil surface, the internal flow redistributes
+pressure between different chordwise locations. The combined effect of
+these local changes increases the aerodynamic loading across the
+airfoil, consistent with the larger lift coefficient observed for the
+horizontal configuration.
 
-For M2, each channel directly connects the pressure and suction
-surfaces. The resulting internal flow transfers fluid from the
-higher-pressure lower surface towards the lower-pressure upper surface.
-This produces local pressure disturbances at the openings while also
-partially equalising the pressure between the two surfaces. The resulting
-pressure distribution is therefore consistent with the lower lift
-coefficient observed for M2.
+The vertical porous airfoil shows a different pressure distribution.
+Each pore connects the pressure surface directly to the suction
+surface, allowing flow to pass from the higher-pressure region towards
+the lower-pressure region. This produces local pressure changes at both
+ends of the pore while also partially reducing the pressure difference
+between the upper and lower surfaces. This behaviour is consistent with
+the lower lift coefficient obtained for the vertical configuration.
 
-The combined configuration exhibits characteristics of both mechanisms.
-The horizontal channels redistribute pressure along the same surface,
-whereas the vertical channels transfer flow between the pressure and
-suction surfaces. Although the two channel systems are physically
-separate and hydraulically independent, their aerodynamic effects
-interact through the external pressure field. Consequently, the
-pressure equalisation associated with the vertical channels partly
-offsets the lift-enhancing redistribution produced by the horizontal
-channels, giving an overall response closer to the impermeable airfoil.
-
+The horizontal--vertical porous airfoil combines both mechanisms. The
+horizontal pores redistribute pressure along the airfoil surfaces,
+while the vertical pores transfer flow between the pressure and suction
+surfaces. Although the two pore arrangements are physically separate
+and hydraulically independent, their aerodynamic effects interact
+through the external pressure field. The pressure equalisation produced
+by the vertical pores therefore partly offsets the lift-enhancing
+redistribution associated with the horizontal pores, resulting in an
+overall response closer to that of the impermeable airfoil.
 
 % ============================================================
 % VELOCITY FIELD
@@ -1228,82 +1238,85 @@ channels, giving an overall response closer to the impermeable airfoil.
 	width=0.62\textwidth
 	]{figs/velocity_difference_percent_portrait_one_colorbar.png}
 	\caption{{\normalfont\normalsize
-		Difference in velocity magnitude between the porous and
-		impermeable-airfoil solutions at $\alpha=10^\circ$ and
-		$D=9~\mathrm{mm}$ for
-		(a) the horizontal model (M1),
-		(b) the vertical model (M2), and
-		(c) the combined horizontal--vertical model (M3).
-		Positive values indicate an increase in velocity magnitude,
-		while negative values indicate a reduction relative to the
-		impermeable solution.
+			Percentage difference in velocity magnitude between the porous
+			and impermeable airfoils at $\alpha=10^\circ$ and
+			$H=9~\mathrm{mm}$ for
+			(a) the horizontal porous airfoil,
+			(b) the vertical porous airfoil, and
+			(c) the horizontal--vertical porous airfoil.
+			Positive values indicate an increase in velocity magnitude,
+			while negative values indicate a reduction relative to the
+			impermeable airfoil.
 	}}
 	\label{fig:velocity_difference}
 \end{figure*}
 
-The velocity field is similarly presented as the difference between the
-porous and solid-airfoil solutions,
+The velocity field is presented as the percentage difference relative
+to the impermeable-airfoil solution,
 
 \begin{equation}
-	\Delta |\boldsymbol{V}|
+	\Delta |\boldsymbol{V}|_{\%}
 	=
-	|\boldsymbol{V}|_{\mathrm{porous}}
-	-
-	|\boldsymbol{V}|_{\mathrm{solid}}.
+	\frac{
+		|\boldsymbol{V}|_{\mathrm{porous}}
+		-
+		|\boldsymbol{V}|_{\mathrm{solid}}
+	}{
+		|\boldsymbol{V}|_{\mathrm{solid}}
+	}
+	\times 100.
 	\label{eq:velocity_field_difference}
 \end{equation}
 
-This representation removes the dominant background acceleration around
-the airfoil and highlights the local acceleration and deceleration
-generated by the channel flow. The largest velocity differences again
-occur near the channel openings, where suction and blowing introduce a
-surface-normal velocity into the external flow. Neighbouring regions
-of increased and reduced velocity form an acceleration--deceleration
-pattern that corresponds closely to the dipole-like pressure features
-in Fig.~\ref{fig:pressure_difference}.
+As with the pressure contours, this comparison isolates the changes
+introduced by the pores from the dominant background flow around the
+airfoil. The largest velocity differences occur close to the pore ends,
+where the imposed surface-normal flow locally perturbs the external
+velocity field. Adjacent regions of acceleration and deceleration are
+visible around several pores and correspond closely to the pressure
+patterns shown in Figure.~\ref{fig:pressure_difference}.
 
-The relationship between the pressure and velocity contours is
-consistent with Bernoulli's equation: a local increase in velocity is
-generally associated with a decrease in static pressure, whereas a
-local reduction in velocity corresponds to an increase in pressure.
-The velocity contours therefore provide a complementary view of the
-flow mechanism responsible for the pressure redistribution.
+The relationship between the two fields is consistent with the
+Bernoulli relation. Regions of increased velocity are generally
+associated with reduced static pressure, while regions of decreased
+velocity correspond to an increase in pressure. The velocity contours
+therefore provide further insight into the flow changes responsible for
+the pressure redistribution and the resulting aerodynamic loading.
 
-For M1, alternating regions of acceleration and deceleration occur
-around the chordwise openings. Flow entering one end of a passage
-produces a local suction effect, while discharge from the other end
-produces a local blowing effect. These changes alter the surface
-velocity distribution on both the suction and pressure surfaces. Their
-combined effect strengthens the pressure difference across the airfoil,
-consistent with the increased lift and larger pitching-moment change
-obtained for the horizontal configuration.
+For the horizontal porous airfoil, alternating regions of acceleration
+and deceleration are concentrated around the chordwise pore ends. Since
+both ends of each pore lie on the same airfoil surface, the internal
+flow redistributes the external velocity between different chordwise
+locations. The combined changes on the suction and pressure surfaces
+strengthen the pressure difference across the airfoil, consistent with
+the increase in lift and the larger change in pitching moment observed
+for this configuration.
 
-For M2, the pressure difference between the lower and upper surfaces
-drives flow from the pressure surface towards the suction surface.
-Suction at the lower opening and blowing at the upper opening alter the
-velocity on both surfaces and reduce part of the velocity contrast
-between them. This is consistent with the partial pressure equalisation
-and the corresponding reduction in lift. A broader velocity-field
-difference is also visible near the leading edge, where the baseline
-pressure and velocity gradients are strongest.
+The vertical porous airfoil shows a different velocity pattern. Flow
+between the pressure and suction surfaces changes the external velocity
+on both sides of the airfoil and reduces part of the velocity contrast
+between them. This behaviour is consistent with the partial pressure
+equalisation discussed previously and the corresponding reduction in
+lift. A broader region of velocity difference is also visible near the
+leading edge, where the external flow experiences strong pressure and
+velocity gradients.
 
-The combined configuration contains the local
-acceleration--deceleration features of M1 together with the
-upper-to-lower surface interaction associated with M2. Although the
-horizontal and vertical channels remain hydraulically independent,
-their aerodynamic effects interact through the external flow field.
-The resulting velocity distribution is therefore not a simple
-superposition of the two individual configurations and is consistent
-with the M3 lift coefficient remaining closer to that of the
-impermeable airfoil.
+The horizontal--vertical porous airfoil contains features associated
+with both pore arrangements. The horizontal pores produce local
+chordwise acceleration and deceleration, while the vertical pores
+redistribute flow between the pressure and suction surfaces. Although
+the two pore arrangements remain physically separate and hydraulically
+independent, their aerodynamic effects interact through the external
+flow field. The resulting velocity distribution therefore reflects the
+combined influence of both mechanisms rather than a simple
+superposition of the individual configurations.
 
-Overall, the difference contours demonstrate that the aerodynamic
-influence of the porous channels is concentrated primarily around the
-channel openings and depends strongly on channel orientation. The
-horizontal passages redistribute the external flow predominantly along
-the same surface, whereas the vertical passages transfer flow between
-the pressure and suction surfaces. These different mechanisms account
-for the contrasting lift and pitching-moment behaviour of M1, M2 and M3.
+Overall, the velocity contours support the trends observed in the
+pressure field and aerodynamic coefficients. The horizontal pores
+primarily redistribute the flow along the airfoil surfaces, whereas the
+vertical pores transfer flow between the pressure and suction surfaces.
+These different flow mechanisms contribute to the contrasting lift and
+pitching-moment behaviour of the three porous-airfoil configurations.
 
 % ============================================================
 % OVERALL COMPARISON
@@ -1313,55 +1326,53 @@ for the contrasting lift and pitching-moment behaviour of M1, M2 and M3.
 \label{subsec:overall_comparison}
 
 The combined aerodynamic and flow-field results show that the response
-of the porous airfoil is governed primarily by the orientation and
-placement of the internal channels, rather than by channel diameter
-alone.
+of the porous airfoil depends strongly on the orientation and placement
+of the pores, while the influence of pore height varies between the
+different configurations.
 
-Among the configurations investigated, the horizontal model (M1)
-produces the strongest aerodynamic effect. At positive angles of
-attack, M1 increases the lift coefficient relative to the impermeable
-airfoil, with the enhancement becoming more pronounced as the channel
-diameter increases. This increase in lift is accompanied by a more
-negative pitching moment, particularly for the larger channel
-diameters, indicating a significant redistribution of the aerodynamic
-loading along the chord.
+Among the three configurations, the horizontal porous airfoil produces
+the strongest aerodynamic effect. At positive angles of attack, it
+increases the lift coefficient relative to the impermeable airfoil,
+with the enhancement becoming more pronounced as the pore height
+increases. This increase in lift is accompanied by a more negative
+pitching moment, indicating that the pores also redistribute the
+aerodynamic loading along the chord.
 
-The vertical model (M2) exhibits a distinctly different behaviour.
-The channels transfer flow between the higher-pressure lower surface
-and the lower-pressure upper surface, promoting partial pressure
-equalisation across the airfoil. Consequently, the lift coefficient is
-generally reduced relative to the impermeable reference at positive
-angles of attack. The comparatively small separation between the three
-diameter cases also indicates a weaker sensitivity to channel diameter,
-with correspondingly smaller changes in pitching moment.
+The vertical porous airfoil shows a different behaviour. The pores
+connect the higher-pressure pressure surface to the lower-pressure
+suction surface, allowing flow to pass between the two sides of the
+airfoil. This partially reduces the pressure difference responsible for
+lift and results in a lower lift coefficient than the impermeable
+reference at positive angles of attack. The relatively small separation
+between the pore-height cases also indicates a weaker sensitivity to
+pore height, together with smaller changes in pitching moment.
 
-The combined horizontal--vertical model (M3) exhibits characteristics
-of both configurations but does not represent a simple superposition of
-their individual aerodynamic effects. The horizontal and vertical
-channels are physically separate and hydraulically independent;
-however, they interact indirectly through the external pressure and
-velocity fields. The pressure redistribution generated by the vertical
-passages partly offsets the lift-enhancing effect of the horizontal
-passages, resulting in an aerodynamic response that remains closer to
-the impermeable-airfoil solution.
+The horizontal--vertical porous airfoil combines both pore
+arrangements. The horizontal and vertical pores remain physically
+separate and hydraulically independent, but their aerodynamic effects
+interact through the external pressure and velocity fields. The
+pressure redistribution associated with the vertical pores partly
+offsets the lift-enhancing effect of the horizontal pores, causing the
+overall aerodynamic response to remain closer to that of the
+impermeable airfoil.
 
-The pressure- and velocity-difference fields provide further support
-for these trends. The strongest local changes occur near the channel
-openings, where suction and blowing alter the surrounding external
-flow. For M1, these effects primarily redistribute the flow between
-different chordwise locations on the same surface, whereas M2 transfers
-flow between the pressure and suction surfaces. The resulting
-aerodynamic behaviour therefore depends strongly on which surface
-regions are connected and on the pressure difference established
-between the channel openings.
+The pressure- and velocity-difference fields support these trends. The
+largest local changes occur near the pore ends, where the internal flow
+alters the surrounding external flow. The horizontal pores mainly
+redistribute the flow between different chordwise locations on the same
+surface, whereas the vertical pores transfer flow between the pressure
+and suction surfaces. The resulting aerodynamic response therefore
+depends not only on pore height, but also on the surface locations
+connected by each pore and the pressure difference established between
+them.
 
-Overall, M1 provides the greatest potential for lift enhancement among
-the three configurations considered. However, its larger change in
-pitching moment demonstrates that porous-channel performance should not
-be assessed from lift alone. The orientation, placement and diameter of
-the channels must instead be considered together with their effects on
-both aerodynamic forces and moments when selecting an appropriate
-porous-airfoil configuration.
+Overall, the horizontal porous airfoil provides the greatest potential
+for lift enhancement among the configurations considered. However, the
+associated increase in the magnitude of the pitching moment shows that
+the performance of a porous-airfoil design should not be assessed from
+lift alone. Pore orientation, placement and height should therefore be
+considered together with their effects on both aerodynamic forces and
+moments.
 
 \section{Conclusion}
 

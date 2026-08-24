@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.24)  21 AUG 2026 18:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.24)  24 AUG 2026 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,9 +983,6 @@ File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 s\pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))
-(C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/capt-of\capt-of.sty
-Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
-)
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count378
@@ -994,8 +991,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks47
 \@floatcapt=\box78
 )
-LaTeX Font Info:    Trying to load font information for T1+stix on input line 4
-7.
+LaTeX Font Info:    Trying to load font information for T1+stix on input line 1
+22.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
@@ -1003,40 +1000,40 @@ File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 (PM_01.aux)
 \openout1 = `PM_01.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 122.
 LaTeX Font Info:    Trying to load font information for LS1+stix on input line 
-47.
+122.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 122.
 LaTeX Font Info:    Trying to load font information for LS2+stix on input line 
-47.
+122.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    ... okay on input line 122.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
 mkii
@@ -1063,9 +1060,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 .cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Command `\dddot' is already robust on input line 47.
-LaTeX Info: Command `\ddddot' is already robust on input line 47.
-Package hyperref Info: Link coloring ON on input line 47.
+LaTeX Info: Command `\dddot' is already robust on input line 122.
+LaTeX Info: Command `\ddddot' is already robust on input line 122.
+Package hyperref Info: Link coloring ON on input line 122.
  (PM_01.out) (PM_01.out)
 \@outlinefile=\write4
 \openout4 = `PM_01.out'.
@@ -1111,72 +1108,72 @@ tim
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 54.
+(hyperref)                removing `math shift' on input line 129.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 54.
+(hyperref)                removing `subscript' on input line 129.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 54.
+(hyperref)                removing `math shift' on input line 129.
 
 \verbatim@out=\write5
 \openout5 = `PM_01.abs'.
 
 LaTeX Font Info:    Trying to load font information for LS1+stixscr on input li
-ne 101.
+ne 176.
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixex on input lin
-e 101.
+e 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 101
+LaTeX Font Info:    Trying to load font information for U+msa on input line 176
 .
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 101
+LaTeX Font Info:    Trying to load font information for U+msb on input line 176
 .
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixfrak on input l
-ine 101.
+ine 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixbb on input lin
-e 101.
+e 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixcal on input li
-ne 101.
+ne 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Trying to load font information for LS1+stixsf on input lin
-e 101.
+e 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Trying to load font information for LS2+stixtt on input lin
-e 101.
+e 176.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -1185,10 +1182,10 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 <figs/cas-grabs.pdf, id=6, 142.26349pt x 85.3579pt>
 File: figs/cas-grabs.pdf Graphic file (type pdf)
 <use figs/cas-grabs.pdf>
-Package pdftex.def Info: figs/cas-grabs.pdf  used on input line 101.
+Package pdftex.def Info: figs/cas-grabs.pdf  used on input line 176.
 (pdftex.def)             Requested size: 142.26312pt x 85.35768pt.
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-105.
+180.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
@@ -1202,10 +1199,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.0}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.115 \maketitle
+l.190 \maketitle
                  [0{C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/enc/dv
 ips/stix/stix-ts1.enc}]
-Overfull \hbox (123.62721pt too wide) detected at line 115
+Overfull \hbox (123.62721pt too wide) detected at line 190
 []
  []
 
@@ -1220,29 +1217,29 @@ LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
 (Font)              scaled to size 6.80005pt on input line 3.
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 115.
+Package hyperref Warning: Ignoring empty anchor on input line 190.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 115.
+Package hyperref Warning: Ignoring empty anchor on input line 190.
 
 
-Package hyperref Warning: Ignoring empty anchor on input line 115.
+Package hyperref Warning: Ignoring empty anchor on input line 190.
 
 <thumbnails/cas-email.jpeg, id=25, 225.84375pt x 225.84375pt>
 File: thumbnails/cas-email.jpeg Graphic file (type jpg)
 <use thumbnails/cas-email.jpeg>
-Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 115.
+Package pdftex.def Info: thumbnails/cas-email.jpeg  used on input line 190.
 (pdftex.def)             Requested size: 7.99838pt x 8.0pt.
 
-Package hyperref Warning: Ignoring empty anchor on input line 115.
+Package hyperref Warning: Ignoring empty anchor on input line 190.
 
 <thumbnails/cas-url.jpeg, id=26, 225.84375pt x 225.84375pt>
 File: thumbnails/cas-url.jpeg Graphic file (type jpg)
 <use thumbnails/cas-url.jpeg>
-Package pdftex.def Info: thumbnails/cas-url.jpeg  used on input line 115.
+Package pdftex.def Info: thumbnails/cas-url.jpeg  used on input line 190.
 (pdftex.def)             Requested size: 7.99838pt x 8.0pt.
 
-Package hyperref Warning: Ignoring empty anchor on input line 115.
+Package hyperref Warning: Ignoring empty anchor on input line 190.
 
 [1{C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i
 4-t1-0.enc}
@@ -1252,134 +1249,137 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.259 E
-       ach aerodynamic panel $i$ is characterised by its length $S_i$, <./thumb
-nails/cas-email.jpeg> <./thumbnails/cas-url.jpeg>]
-Underfull \hbox (badness 1292) in paragraph at lines 288--291
-[]\T1/stix/b/n/10 Vertical model (M2): \T1/stix/m/n/10 four in-de-pen-dent lowe
-r-to-
- []
-
-<figs/model1_horizontal.png, id=44, 477.77698pt x 161.3789pt>
+l.332 \end{equation}
+                     <./thumbnails/cas-email.jpeg> <./thumbnails/cas-url.jpeg>]
+<figs/model1_horizontal.png, id=43, 477.77698pt x 161.3789pt>
 File: figs/model1_horizontal.png Graphic file (type png)
 <use figs/model1_horizontal.png>
-Package pdftex.def Info: figs/model1_horizontal.png  used on input line 310.
+Package pdftex.def Info: figs/model1_horizontal.png  used on input line 374.
 (pdftex.def)             Requested size: 202.51772pt x 68.40413pt.
-<figs/model2_vertical.png, id=46, 477.77698pt x 164.41425pt>
+<figs/model2_vertical.png, id=45, 477.77698pt x 164.41425pt>
 File: figs/model2_vertical.png Graphic file (type png)
 <use figs/model2_vertical.png>
-Package pdftex.def Info: figs/model2_vertical.png  used on input line 319.
+Package pdftex.def Info: figs/model2_vertical.png  used on input line 384.
 (pdftex.def)             Requested size: 202.51772pt x 69.69072pt.
-<figs/model3_combined.png, id=47, 477.77698pt x 162.67976pt>
+<figs/model3_combined.png, id=46, 477.77698pt x 162.67976pt>
 File: figs/model3_combined.png Graphic file (type png)
 <use figs/model3_combined.png>
-Package pdftex.def Info: figs/model3_combined.png  used on input line 328.
+Package pdftex.def Info: figs/model3_combined.png  used on input line 394.
 (pdftex.def)             Requested size: 202.51772pt x 68.95552pt.
+
+Underfull \hbox (badness 1199) in paragraph at lines 406--406
+\T1/stix/m/n/10 present study: (a) hor-i-zon-tal porous air-foil, (b) ver-ti-ca
+l
+ []
+
 [2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.441 \end{equation}
+l.493 \end{equation}
                      <./figs/model1_horizontal.png> <./figs/model2_vertical.png
-> <./figs/model3_combined.png>]
-Underfull \hbox (badness 1215) in paragraph at lines 639--643
-\T1/stix/m/n/10 the aero-dy-namic surface-pressure dis-tri-bu-tion. When an
- []
-
-[3]
-LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 707.
-
-Underfull \hbox (badness 1430) in paragraph at lines 761--764
+> <./figs/model3_combined.png>] [3]
+Underfull \hbox (badness 1430) in paragraph at lines 792--795
 \T1/stix/m/n/10 The pitching-moment co-ef-fi-cient is eval-u-ated about the
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 782--786
+Underfull \hbox (badness 1005) in paragraph at lines 813--817
 \T1/stix/m/n/10 For di-ag-nos-tic com-par-i-son, an ad-di-tional lift co-ef-fi-
 cient
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 885--892
-[]\T1/stix/m/n/10 The aero-dy-namic re-sponse of the three porous air-
+Overfull \hbox (1.02547pt too wide) in paragraph at lines 895--902
+\T1/stix/m/n/10 con-fig-u-ra-tions was in-ves-ti-gated over an angle-of-attack 
+range
  []
 
-
-Underfull \hbox (badness 1087) in paragraph at lines 885--892
-\T1/stix/m/n/10 (M2) and com-bined horizontal--vertical (M3) con-fig-u-ra-
- []
-
-[4]
-<figs/CL_vs_AoA_three_models_three_diameters.png, id=124, 528.43823pt x 211.678
+[4
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.908 
+      ]
+<figs/CL_vs_AoA_three_models_three_diameters.png, id=118, 528.43823pt x 211.678
 83pt>
 File: figs/CL_vs_AoA_three_models_three_diameters.png Graphic file (type png)
 <use figs/CL_vs_AoA_three_models_three_diameters.png>
 Package pdftex.def Info: figs/CL_vs_AoA_three_models_three_diameters.png  used 
-on input line 946.
+on input line 949.
 (pdftex.def)             Requested size: 474.73184pt x 190.17325pt.
-<figs/CM_vs_AoA_three_models_three_diameters.png, id=126, 540.72414pt x 211.678
-83pt>
-File: figs/CM_vs_AoA_three_models_three_diameters.png Graphic file (type png)
-<use figs/CM_vs_AoA_three_models_three_diameters.png>
-Package pdftex.def Info: figs/CM_vs_AoA_three_models_three_diameters.png  used 
-on input line 1039.
-(pdftex.def)             Requested size: 474.73184pt x 185.84511pt.
- [5] [6
+ [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1087 T
-        he combined configuration exhibits an intermediate behaviour. The
+l.1003 T
+        he horizontal--vertical porous airfoil remains comparatively close to <
+./figs/CL_vs_AoA_three_models_three_diameters.png>]
+<figs/CM_vs_AoA_three_models_three_diameters.png, id=130, 540.72414pt x 211.678
+83pt>
+File: figs/CM_vs_AoA_three_models_three_diameters.png Graphic file (type png)
+<use figs/CM_vs_AoA_three_models_three_diameters.png>
+Package pdftex.def Info: figs/CM_vs_AoA_three_models_three_diameters.png  used 
+on input line 1043.
+(pdftex.def)             Requested size: 474.73184pt x 185.84511pt.
+ [6
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1087 T
-        he combined configuration exhibits an intermediate behaviour. The <./fi
-gs/CL_vs_AoA_three_models_three_diameters.png> <./figs/CM_vs_AoA_three_models_t
-hree_diameters.png>]
-Underfull \hbox (badness 1635) in paragraph at lines 1093--1100
-\T1/stix/m/n/10 phys-i-cally sep-a-rate and hy-drauli-cally in-de-pen-dent, the
-ir
- []
-
-<figs/pressure_difference_pa_portrait_one_colorbar.png, id=145, 441.06381pt x 3
+l.1101 
+        <./figs/CM_vs_AoA_three_models_three_diameters.png>]
+<figs/pressure_difference_pa_portrait_one_colorbar.png, id=138, 441.06381pt x 3
 78.83934pt>
 File: figs/pressure_difference_pa_portrait_one_colorbar.png Graphic file (type 
 png)
 <use figs/pressure_difference_pa_portrait_one_colorbar.png>
 Package pdftex.def Info: figs/pressure_difference_pa_portrait_one_colorbar.png 
- used on input line 1155.
+ used on input line 1166.
 (pdftex.def)             Requested size: 306.59308pt x 263.33592pt.
-<figs/velocity_difference_percent_portrait_one_colorbar.png, id=146, 441.13608p
+
+Underfull \hbox (badness 2012) in paragraph at lines 1219--1228
+\T1/stix/m/n/10 mech-a-nisms. The hor-i-zon-tal pores re-dis-tribute pres-sure
+ []
+
+
+Underfull \hbox (badness 1596) in paragraph at lines 1219--1228
+\T1/stix/m/n/10 the two pore ar-range-ments are phys-i-cally sep-a-rate and
+ []
+
+<figs/velocity_difference_percent_portrait_one_colorbar.png, id=139, 441.13608p
 t x 378.83934pt>
 File: figs/velocity_difference_percent_portrait_one_colorbar.png Graphic file (
 type png)
 <use figs/velocity_difference_percent_portrait_one_colorbar.png>
 Package pdftex.def Info: figs/velocity_difference_percent_portrait_one_colorbar
-.png  used on input line 1229.
+.png  used on input line 1239.
 (pdftex.def)             Requested size: 306.59308pt x 263.30124pt.
-[7]
-Overfull \hbox (13.54555pt too wide) in paragraph at lines 1290--1299
-[]\T1/stix/m/n/10 The com-bined con-fig-u-ra-tion con-tains the lo-cal accelera
-tion--
- []
-
-[8
+[7] [8
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1337 
-        <./figs/pressure_difference_pa_portrait_one_colorbar.png>] [9
+l.1349 
+        <./figs/pressure_difference_pa_portrait_one_colorbar.png>]
+Underfull \hbox (badness 2080) in paragraph at lines 1359--1368
+[]\T1/stix/m/n/10 The pressure- and velocity-difference fields sup-port
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 1359--1368
+\T1/stix/m/n/10 flow. The hor-i-zon-tal pores mainly re-dis-tribute the flow
+ []
+
+[9
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1371 \end{document}
+l.1382 \end{document}
                       <./figs/velocity_difference_percent_portrait_one_colorbar
 .png>] (PM_01.aux)
  ***********
@@ -1390,16 +1390,16 @@ Package rerunfilecheck Info: File `PM_01.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28037 strings out of 467510
- 509012 string characters out of 5407822
- 920227 words of memory out of 5000000
- 56673 multiletter control sequences out of 15000+600000
- 750012 words of font info for 207 fonts, out of 8000000 for 9000
+ 27997 strings out of 467510
+ 508181 string characters out of 5407822
+ 920042 words of memory out of 5000000
+ 56645 multiletter control sequences out of 15000+600000
+ 740092 words of font info for 191 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,14n,98p,566b,894s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,14n,98p,570b,898s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\s358959\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
-ss0900.pk> <C:\Users\s358959\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecsx0900.pk><C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type1/p
+sx0900.pk> <C:\Users\s358959\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
+pi600\ecss0900.pk><C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/inconsolata/Inconsolata-zi4r.pfb><C:/Users/s358959/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb><C:/Users/s358959/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb><C:/Us
@@ -1414,9 +1414,9 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-mathit-bold.pfb><C:/Users
 <C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type1/public/stix/stix-ma
 thrm.pfb><C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type1/public/sti
 x/stix-mathscr.pfb>
-Output written on PM_01.pdf (11 pages, 4317733 bytes).
+Output written on PM_01.pdf (11 pages, 4307067 bytes).
 PDF statistics:
- 323 PDF objects out of 1000 (max. 8388607)
- 85 named destinations out of 1000 (max. 500000)
+ 278 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 
