@@ -1,0 +1,121 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Mineck1996FullChordPorosity}
+R.~E. Mineck, P.~M. Hartwich,
+  \href{https://ntrs.nasa.gov/citations/19960020449}{Effect of full-chord
+  porosity on aerodynamic characteristics of the {NACA} 0012 airfoil}, {NASA}
+  {Technical} {Paper} NASA-TP-3591, NASA Langley Research Center (1996).
+\newline\urlprefix\url{https://ntrs.nasa.gov/citations/19960020449}
+
+\bibitem{Aldheeb2018PorousAirfoilsWings}
+M.~Aldheeb, W.~Asrar, E.~Sulaeman, A.~A. Omar, Aerodynamics of porous airfoils
+  and wings, Acta Mechanica 229~(9) (2018) 3915--3933.
+\newblock \href {https://doi.org/10.1007/s00707-018-2203-6}
+  {\path{doi:10.1007/s00707-018-2203-6}}.
+
+\bibitem{Hajian2017PorosityGradients}
+R.~Hajian, J.~W. Jaworski, The steady aerodynamics of aerofoils with porosity
+  gradients, Proceedings of the Royal Society A: Mathematical, Physical and
+  Engineering Sciences 473~(2205) (2017) 20170266.
+\newblock \href {https://doi.org/10.1098/rspa.2017.0266}
+  {\path{doi:10.1098/rspa.2017.0266}}.
+
+\bibitem{Luesutthiviboon2019ThinAirfoilAssessment}
+S.~Luesutthiviboon, F.~Avallone, D.~Ragni, M.~Snellen, Assessment of the
+  thin-airfoil method for predicting steady pressure distribution on
+  partially-porous airfoils, in: 25th {AIAA}/{CEAS} aeroacoustics conference,
+  2019.
+\newblock \href {https://doi.org/10.2514/6.2019-2647}
+  {\path{doi:10.2514/6.2019-2647}}.
+
+\bibitem{Baddoo2021UnsteadyPorousAerofoils}
+P.~J. Baddoo, R.~Hajian, J.~W. Jaworski, Unsteady aerodynamics of porous
+  aerofoils, Journal of Fluid Mechanics 913 (2021) A16.
+\newblock \href {https://doi.org/10.1017/jfm.2020.1031}
+  {\path{doi:10.1017/jfm.2020.1031}}.
+
+\bibitem{Hanna2019PorosityModerateRe}
+Y.~G.~T. Hanna, G.~R. Spedding, Aerodynamic performance improvements due to
+  porosity in wings at moderate {Re}, in: {AIAA} aviation 2019 forum, 2019.
+\newblock \href {https://doi.org/10.2514/6.2019-3584}
+  {\path{doi:10.2514/6.2019-3584}}.
+
+\bibitem{Zhu2023NACA0018PorousTrailingEdge}
+W.~Zhu, J.~Liu, Z.~Sun, J.~Cao, G.~Guo, W.~Shen, Numerical study on flow and
+  noise characteristics of an {NACA0018} airfoil with a porous trailing edge,
+  Sustainability 15~(1) (2023) 275.
+\newblock \href {https://doi.org/10.3390/su15010275}
+  {\path{doi:10.3390/su15010275}}.
+
+\bibitem{Li2023PartiallyPorousAirfoils}
+J.~Li, K.~Nagata, T.~Watanabe, Large-eddy simulation of low-reynolds-number
+  flow around partially porous airfoils, Journal of Aircraft 60~(6) (2023)
+  1998--2009.
+\newblock \href {https://doi.org/10.2514/1.C037253}
+  {\path{doi:10.2514/1.C037253}}.
+
+\bibitem{Acarer2020DU12W262PassiveFlow}
+S.~Acarer, Peak lift-to-drag ratio enhancement of the {DU12W262} airfoil by
+  passive flow control and its impact on horizontal and vertical axis wind
+  turbines, Energy 201 (2020) 117659.
+\newblock \href {https://doi.org/10.1016/j.energy.2020.117659}
+  {\path{doi:10.1016/j.energy.2020.117659}}.
+
+\bibitem{Kestel2020PassiveBleeding}
+K.~Kestel, B.~Ramazanlı, M.~M. Yavuz, Control of flow structure over a
+  non-slender delta wing using passive bleeding, Aerospace Science and
+  Technology 106 (2020) 106136.
+\newblock \href {https://doi.org/10.1016/j.ast.2020.106136}
+  {\path{doi:10.1016/j.ast.2020.106136}}.
+
+\bibitem{Bahadi2026CurvedPassiveSlot}
+H.~A. Bahadi, N.~A.~A. Qasem, S.~Alfifi, S.~M. Ghazzawi, H.~Abid, Aerodynamic
+  parametric study of a curved passive internal slot for enhanced landing and
+  takeoff performance: a {NACA} 4412 airfoil case study, Aerospace Science and
+  Technology 177 (2026) 113056.
+\newblock \href {https://doi.org/10.1016/j.ast.2026.113056}
+  {\path{doi:10.1016/j.ast.2026.113056}}.
+
+\bibitem{Zamani2026NACA0015PorousStall}
+M.~Zamani, M.~J. Maghrebi, A.~R. Teymourtash, Optimization and numerical
+  analysis of {NACA0015} porous airfoil in static stall, Aerospace Science and
+  Technology 179 (2026) 113615.
+\newblock \href {https://doi.org/10.1016/j.ast.2026.113615}
+  {\path{doi:10.1016/j.ast.2026.113615}}.
+
+\bibitem{HessSmith1967PotentialFlow}
+J.~L. Hess, A.~M.~O. Smith, Calculation of potential flow about arbitrary
+  bodies, Progress in Aerospace Sciences 8 (1967) 1--138.
+\newblock \href {https://doi.org/10.1016/0376-0421(67)90003-6}
+  {\path{doi:10.1016/0376-0421(67)90003-6}}.
+
+\bibitem{Hess1990PanelMethods}
+J.~L. Hess, Panel methods in computational fluid dynamics, Annual Review of
+  Fluid Mechanics 22 (1990) 255--274.
+\newblock \href {https://doi.org/10.1146/annurev.fl.22.010190.001351}
+  {\path{doi:10.1146/annurev.fl.22.010190.001351}}.
+
+\bibitem{Birk2022HessSmithGuide}
+L.~Birk, A comprehensive and practical guide to the hess and smith constant
+  source and dipole panel, Ship Technology Research 69~(1) (2022) 50--62.
+\newblock \href {https://doi.org/10.1080/09377255.2021.1966575}
+  {\path{doi:10.1080/09377255.2021.1966575}}.
+
+\bibitem{DrelaGiles1987ViscousInviscid}
+M.~Drela, M.~B. Giles, Viscous–inviscid analysis of transonic and low
+  reynolds number airfoils, AIAA Journal 25~(10) (1987) 1347--1355.
+\newblock \href {https://doi.org/10.2514/3.9789} {\path{doi:10.2514/3.9789}}.
+
+\bibitem{Drela1989XFOIL}
+M.~Drela, {XFOIL}: {An} analysis and design system for low reynolds number
+  airfoils, in: T.~J. Mueller (Ed.), Low reynolds number aerodynamics, Vol.~54
+  of Lecture notes in engineering, Springer Berlin Heidelberg, 1989, pp. 1--12.
+\newblock \href {https://doi.org/10.1007/978-3-642-84010-4\_1}
+  {\path{doi:10.1007/978-3-642-84010-4\_1}}.
+
+\end{thebibliography}
