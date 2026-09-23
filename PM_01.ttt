@@ -1,0 +1,52 @@
+\begin{table}
+	\centering
+	\caption{{\normalfont\normalsize Numerical and operating conditions used in the present study.}}
+	\label{tab:numerical_setup}
+	
+	{\normalfont\normalsize
+		\begin{tabular}{lll}
+			\hline
+			\textbf{Parameter} & \textbf{Symbol} & \textbf{Value} \\
+			\hline
+			
+			Airfoil & -- & NACA~0018 \\
+			Chord length & $c$ & $1~\mathrm{m}$ \\
+			Number of panels & $N$ & $1000$ \\
+			Fluid density & $\rho_{\infty}$ & $1.225~\mathrm{kg\,m^{-3}}$ \\
+			Dynamic viscosity & $\mu_{\infty}$ &
+			$1.8\times10^{-5}~\mathrm{Pa\,s}$ \\
+			Freestream pressure & $p_{\infty}$ & $101325~\mathrm{Pa}$ \\
+			Chord Reynolds number & $Re_c$ & $5.0\times10^{5}$ \\
+			Principal angle of attack & $\alpha$ & $4^\circ$ \\
+			Angle-of-attack range & $\alpha$ & $-5^\circ$ to $15^\circ$ \\
+			Angle-of-attack increment & $\Delta\alpha$ & $1^\circ$ \\
+			Pore height & $H$ & $8,\;9,\;10~\mathrm{mm}$ \\
+			
+			\hline
+		\end{tabular}
+	}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
+	\centering
+	\caption{Numerical and operating conditions used in the present study.}
+	\label{tab:numerical_setup}
+	\begin{tabular}{lll}
+		\hline
+		\textbf{Parameter} & \textbf{Symbol} & \textbf{Value}\\
+		\hline
+		Airfoil & -- & NACA~0018\\
+		Chord length & $c$ & $1~\mathrm{m}$\\
+		Number of panels & $N$ & $1000$\\
+		Fluid density & $\rho_\infty$ & $1.225~\mathrm{kg\,m^{-3}}$\\
+		Dynamic viscosity & $\mu_\infty$ & $1.8\times10^{-5}~\mathrm{Pa\,s}$\\
+		Freestream pressure & $p_\infty$ & $101325~\mathrm{Pa}$\\
+		Chord Reynolds number & $Re_c$ & $5.0\times10^5$\\
+		Principal angle of attack & $\alpha$ & $4^\circ$\\
+		Angle-of-attack range & $\alpha$ & $-5^\circ$ to $15^\circ$\\
+		Angle increment & $\Delta\alpha$ & $1^\circ$\\
+		Channel height & $H$ & $8,\;9,\;10~\mathrm{mm}$\\
+		\hline
+	\end{tabular}
+\end{table}

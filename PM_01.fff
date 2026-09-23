@@ -1,0 +1,304 @@
+\begin{figure}
+	\centering
+	
+	\begin{tikzpicture}[
+		font=\normalfont\normalsize,
+		node distance=4.5mm,
+		process/.style={
+			rectangle,
+			draw,
+			rounded corners=3pt,
+			thick,
+			align=center,
+			text width=0.72\linewidth,
+			minimum height=8mm,
+			inner sep=3pt
+		},
+		output/.style={
+			rectangle,
+			draw,
+			double,
+			rounded corners=3pt,
+			thick,
+			align=center,
+			text width=0.62\linewidth,
+			minimum height=10mm,
+			inner sep=3pt
+		},
+		arrow/.style={
+			-{Latex[length=1.8mm]},
+			thick
+		}
+		]
+		
+		\node[process] (height)
+		{Select pore height\\
+			$H=8,\;9,\;10~\mathrm{mm}$};
+		
+		\node[process, below=of height] (init)
+		{Initialise with zero transpiration\\
+			$v_{n,i}^{(0)}=0$};
+		
+		\node[process, below=of init] (panel)
+		{Solve source--vortex panel system};
+		
+		\node[process, below=of panel] (pressure)
+		{Compute pressure difference across each pore\\
+			$\Delta p_k=p_{1,k}-p_{2,k}$};
+		
+		\node[process, below=of pressure] (flow)
+		{Solve internal pore-flow model\\
+			to obtain $Q_k$ and $Re_{D,k}$};
+		
+		\node[process, below=of flow] (update)
+		{Update surface-normal velocities\\
+			at the pore openings};
+		
+		\node[process, below=of update] (iterate)
+		{Iterate aero--hydraulic coupling\\
+			until convergence};
+		
+		\node[output, below=of iterate] (results)
+		{Report $C_p$, $C_L$, $C_{D,p}$, $C_M$,\\
+			$Q$, $\Delta p$ and $Re_D$};
+		
+		\draw[arrow] (height) -- (init);
+		\draw[arrow] (init) -- (panel);
+		\draw[arrow] (panel) -- (pressure);
+		\draw[arrow] (pressure) -- (flow);
+		\draw[arrow] (flow) -- (update);
+		\draw[arrow] (update) -- (iterate);
+		\draw[arrow] (iterate) -- (results);
+		
+	\end{tikzpicture}
+	
+	\caption{{\normalfont\normalsize
+			Coupled aero--hydraulic solution procedure applied to
+			the investigated pore heights.}}
+	\label{fig:coupled_iteration_loop}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+	\centering
+	
+	\includegraphics[width=0.85\columnwidth]
+	{figs/model1_horizontal.png}
+	
+	\vspace{1mm}
+	
+	{\normalfont\normalsize
+		\textbf{(a)} Horizontal porous airfoil}
+	
+	\vspace{3mm}
+	
+	\includegraphics[width=0.85\columnwidth]
+	{figs/model2_vertical.png}
+	
+	\vspace{1mm}
+	
+	{\normalfont\normalsize
+		\textbf{(b)} Vertical porous airfoil}
+	
+	\vspace{3mm}
+	
+	\includegraphics[width=0.85\columnwidth]
+	{figs/model3_combined.png}
+	
+	\vspace{1mm}
+	
+	{\normalfont\normalsize
+		\textbf{(c)} Horizontal--vertical porous airfoil}
+	
+	\caption{
+		Porous-airfoil configurations considered in the present study:
+		(a) horizontal porous airfoil,
+		(b) vertical porous airfoil, and
+		(c) horizontal--vertical porous airfoil.
+	}
+	\label{fig:porous_models}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure*}
+	\centering
+	\includegraphics[
+	width=0.96\textwidth
+	]{figs/CL_vs_AoA_three_models_three_diameters.png}
+	\caption{
+		Lift coefficient as a function of angle of attack for
+		(a) the horizontal porous airfoil,
+		(b) the vertical porous airfoil, and
+		(c) the horizontal--vertical porous airfoil.
+		Results are shown for pore heights
+		$H=8$, $9$ and $10~\mathrm{mm}$ together with the
+		impermeable panel-method and inviscid XFOIL reference
+		solutions.
+	}
+	\label{fig:cl_aoa_three_models}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+	\centering
+	
+	\includegraphics[
+	width=0.96\textwidth
+	]{figs/CM_vs_AoA_three_models_three_diameters.png}
+	
+	\caption{
+		Pitching-moment coefficient about the quarter chord as a
+		function of angle of attack for
+		(a) the horizontal porous airfoil,
+		(b) the vertical porous airfoil, and
+		(c) the horizontal--vertical porous airfoil.
+		Results are shown for pore heights
+		$H=8$, $9$ and $10~\mathrm{mm}$ together with the
+		impermeable panel-method and inviscid XFOIL reference solutions.
+	}
+	
+	\label{fig:cm_aoa_three_models}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+	\centering
+	\includegraphics[
+	width=0.62\textwidth
+	]{figs/pressure_difference_pa_portrait_one_colorbar.png}
+	\caption{{\normalfont\normalsize
+			Pressure-field difference between the porous and
+			impermeable airfoils at $\alpha=10^\circ$ and
+			$H=9~\mathrm{mm}$ for
+			(a) the horizontal porous airfoil,
+			(b) the vertical porous airfoil, and
+			(c) the horizontal--vertical porous airfoil.
+			Positive values indicate an increase in pressure relative
+			to the impermeable airfoil, while negative values indicate
+			a reduction.
+	}}
+	\label{fig:pressure_difference}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+	\centering
+	\includegraphics[
+	width=0.62\textwidth
+	]{figs/velocity_difference_percent_portrait_one_colorbar.png}
+	\caption{{\normalfont\normalsize
+			Percentage difference in velocity magnitude between the porous
+			and impermeable airfoils at $\alpha=10^\circ$ and
+			$H=9~\mathrm{mm}$ for
+			(a) the horizontal porous airfoil,
+			(b) the vertical porous airfoil, and
+			(c) the horizontal--vertical porous airfoil.
+			Positive values indicate an increase in velocity magnitude,
+			while negative values indicate a reduction relative to the
+			impermeable airfoil.
+	}}
+	\label{fig:velocity_difference}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[
+		font=\normalfont\footnotesize,
+		node distance=2.5mm,
+		process/.style={
+			rectangle,draw,align=center,
+			text width=0.56\linewidth,
+			minimum height=6mm,
+			inner sep=2pt
+		},
+		decision/.style={
+			diamond,draw,aspect=2.5,align=center,
+			text width=0.24\linewidth,
+			inner sep=1pt
+		},
+		arrow/.style={-{Latex[length=1.5mm]},semithick}
+		]
+		
+		\node[process] (geometry)
+		{Define geometry and flow conditions};
+		
+		\node[process,below=of geometry] (guess)
+		{Estimate channel flows from solid-airfoil pressures};
+		
+		\node[process,below=of guess] (map)
+		{Apply pore-normal velocities};
+		
+		\node[process,below=of map] (panel)
+		{Solve panel system and calculate pore pressures};
+		
+		\node[process,below=of panel] (hydraulic)
+		{Calculate pressure-driven channel flows};
+		
+		\node[decision,below=of hydraulic] (converged)
+		{Coupling converged?};
+		
+		\node[process,below=4mm of converged] (report)
+		{Report results};
+		
+		\node[
+		process,
+		right=6mm of converged,
+		text width=0.16\linewidth
+		] (retry) {Update trial flow rates};
+		
+		\draw[arrow] (geometry) -- (guess);
+		\draw[arrow] (guess) -- (map);
+		\draw[arrow] (map) -- (panel);
+		\draw[arrow] (panel) -- (hydraulic);
+		\draw[arrow] (hydraulic) -- (converged);
+		
+		\draw[arrow] (converged) --
+		node[left,font=\scriptsize]{Yes} (report);
+		
+		\draw[arrow] (converged) --
+		node[above,font=\scriptsize]{No} (retry);
+		
+		\draw[arrow] (retry.north) |- (map.east);
+		
+	\end{tikzpicture}
+	
+	\caption{Coupled aero--hydraulic solution procedure.}
+	\label{fig:coupled_solution_workflow}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}[H]
+	\centering
+	
+	\includegraphics[
+	width=0.80\linewidth,
+	height=0.12\textheight,
+	keepaspectratio
+	]{figs/model1_horizontal.png}
+	\par
+	{\footnotesize\textbf{(a)} Chordwise layout\par}
+	
+	\vspace{2mm}
+	
+	\includegraphics[
+	width=0.80\linewidth,
+	height=0.12\textheight,
+	keepaspectratio
+	]{figs/model2_vertical.png}
+	\par
+	{\footnotesize\textbf{(b)} Cross-surface layout\par}
+	
+	\vspace{2mm}
+	
+	\includegraphics[
+	width=0.80\linewidth,
+	height=0.12\textheight,
+	keepaspectratio
+	]{figs/model3_combined.png}
+	\par
+	{\footnotesize\textbf{(c)} Combined independent layout\par}
+	
+	\caption{Internal-channel layouts considered in this study.}
+	\label{fig:porous_models}
+\end{figure}

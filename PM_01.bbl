@@ -67,7 +67,7 @@ S.~Acarer, Peak lift-to-drag ratio enhancement of the {DU12W262} airfoil by
   {\path{doi:10.1016/j.energy.2020.117659}}.
 
 \bibitem{Kestel2020PassiveBleeding}
-K.~Kestel, B.~Ramazanlı, M.~M. Yavuz, Control of flow structure over a
+K.~Kestel, B.~Ramazanl{\i}, M.~M. Yavuz, Control of flow structure over a
   non-slender delta wing using passive bleeding, Aerospace Science and
   Technology 106 (2020) 106136.
 \newblock \href {https://doi.org/10.1016/j.ast.2020.106136}
@@ -107,8 +107,8 @@ L.~Birk, A comprehensive and practical guide to the hess and smith constant
   {\path{doi:10.1080/09377255.2021.1966575}}.
 
 \bibitem{DrelaGiles1987ViscousInviscid}
-M.~Drela, M.~B. Giles, Viscous–inviscid analysis of transonic and low
-  reynolds number airfoils, AIAA Journal 25~(10) (1987) 1347--1355.
+M.~Drela, M.~B. Giles, Viscous--inviscid analysis of transonic and low reynolds
+  number airfoils, AIAA Journal 25~(10) (1987) 1347--1355.
 \newblock \href {https://doi.org/10.2514/3.9789} {\path{doi:10.2514/3.9789}}.
 
 \bibitem{Drela1989XFOIL}
@@ -117,5 +117,47 @@ M.~Drela, {XFOIL}: {An} analysis and design system for low reynolds number
   of Lecture notes in engineering, Springer Berlin Heidelberg, 1989, pp. 1--12.
 \newblock \href {https://doi.org/10.1007/978-3-642-84010-4\_1}
   {\path{doi:10.1007/978-3-642-84010-4\_1}}.
+
+\bibitem{Ladson1996NACAAirfoils}
+C.~L. Ladson, J.~Brooks, Cuyler~W., A.~S. Hill, D.~W. Sproles,
+  \href{https://ntrs.nasa.gov/citations/19970008124}{Computer program to obtain
+  ordinates for {NACA} airfoils}, Tech. Rep. NASA-TM-4741, NASA Langley
+  Research Center (1996).
+\newline\urlprefix\url{https://ntrs.nasa.gov/citations/19970008124}
+
+\bibitem{KatzPlotkin2001LowSpeedAerodynamics}
+J.~Katz, A.~Plotkin, Low-speed aerodynamics, 2nd Edition, Cambridge University
+  Press, 2001.
+\newblock \href {https://doi.org/10.1017/CBO9780511810329}
+  {\path{doi:10.1017/CBO9780511810329}}.
+
+\bibitem{ShahLondon1978LaminarDucts}
+R.~K. Shah, A.~L. London, Laminar flow forced convection in ducts: a source
+  book for compact heat exchanger analytical data, Academic Press, New York,
+  1978.
+
+\bibitem{Moody1944FrictionFactors}
+L.~F. Moody, Friction factors for pipe flow, Transactions of the ASME 66~(8)
+  (1944) 671--678.
+\newblock \href {https://doi.org/10.1115/1.4018140}
+  {\path{doi:10.1115/1.4018140}}.
+
+\bibitem{MoreGarbowHillstrom1980MINPACK}
+J.~J. Mor{\'e}, B.~S. Garbow, K.~E. Hillstrom,
+  \href{https://digital.library.unt.edu/ark:/67531/metadc283470/}{User guide
+  for {MINPACK}-1}, Tech. Rep. ANL-80-74, Argonne National Laboratory (1980).
+\newline\urlprefix\url{https://digital.library.unt.edu/ark:/67531/metadc283470/}
+
+\bibitem{Virtanen2020SciPy}
+P.~Virtanen, R.~Gommers, T.~E. Oliphant, M.~Haberland, T.~Reddy, D.~Cournapeau,
+  E.~Burovski, P.~Peterson, W.~Weckesser, J.~Bright, S.~J. van~der Walt,
+  M.~Brett, J.~Wilson, K.~J. Millman, N.~Mayorov, A.~R.~J. Nelson, E.~Jones,
+  R.~Kern, E.~Larson, C.~J. Carey, {\.I}.~Polat, Y.~Feng, E.~W. Moore,
+  J.~VanderPlas, D.~Laxalde, J.~Perktold, R.~Cimrman, I.~Henriksen, E.~A.
+  Quintero, C.~R. Harris, A.~M. Archibald, A.~H. Ribeiro, F.~Pedregosa, P.~van
+  Mulbregt, {SciPy 1.0 Contributors}, {SciPy} 1.0: {Fundamental} algorithms for
+  scientific computing in {Python}, Nature Methods 17~(3) (2020) 261--272.
+\newblock \href {https://doi.org/10.1038/s41592-019-0686-2}
+  {\path{doi:10.1038/s41592-019-0686-2}}.
 
 \end{thebibliography}

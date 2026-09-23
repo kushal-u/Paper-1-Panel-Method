@@ -1,9 +1,2 @@
-This template helps you to create a properly formatted \LaTeX\ manuscript.
+Porous airfoils offer a passive means of modifying aerodynamic loading through pressure-driven flow within internal pathways. This study develops a coupled aerodynamic–hydraulic framework for a NACA 0018 airfoil, combining a source–vortex panel method with rectangular-channel flow models. Three configurations are investigated: chordwise horizontal passages, vertical passages connecting the pressure and suction surfaces, and a combined horizontal–vertical arrangement. The results show that aerodynamic performance depends strongly on pore orientation and connectivity. Horizontal passages redistribute pressure between chordwise locations on the same surface and increase lift at positive angles of attack, with stronger effects at larger pore heights. Vertical pore promote pressure equalisation between the pressure and suction surfaces and reduce lift relative to the impermeable airfoil. In the combined configuration, these mechanisms interact through the external flow field, giving a response closer to that of the solid airfoil. Pressure and velocity difference fields show that the strongest flow modifications occur near the pore openings. These results demonstrate that porous-airfoil performance is governed not simply by porosity, but by the orientation, location and hydraulic connectivity of the internal passage
 	
-	\noindent\texttt{\textbackslash begin{abstract}} \dots
-	\texttt{\textbackslash end{abstract}} and
-	\verb+\begin{keyword}+ \verb+...+ \verb+\end{keyword}+
-	which
-	contain the abstract and keywords respectively.
-	
-	\noindent Each keyword shall be separated by a \verb+\sep+ command.

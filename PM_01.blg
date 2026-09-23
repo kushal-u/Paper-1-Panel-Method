@@ -3,69 +3,49 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: PM_01.aux
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 The style file: elsarticle-num.bst
-Reallocating 'name_of_file' (item size: 1) to 26 items.
-Database file #1: porous_airfoil_literature.bib
-Repeated entry---line 463 of file porous_airfoil_literature.bib
- : @article{HessSmith1967PotentialFlow
- :                                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 473 of file porous_airfoil_literature.bib
- : @article{Hess1990PanelMethods
- :                              ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 483 of file porous_airfoil_literature.bib
- : @article{Birk2022HessSmithGuide
- :                                ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 494 of file porous_airfoil_literature.bib
- : @article{DrelaGiles1987ViscousInviscid
- :                                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 505 of file porous_airfoil_literature.bib
- : @inproceedings{Drela1989XFOIL
- :                              ,
-I'm skipping whatever remains of this entry
+Reallocating 'name_of_file' (item size: 1) to 35 items.
+Database file #1: porous_airfoil_literature_COMPLETE.bib
 Warning--empty pages in Luesutthiviboon2019ThinAirfoilAssessment
 Warning--empty pages in Hanna2019PorosityModerateRe
-You've used 17 entries,
+You've used 23 entries,
             2952 wiz_defined-function locations,
-            818 strings with 9374 characters,
-and the built_in function-call counts, 5456 in all, are:
-= -- 539
-> -- 156
-< -- 3
-+ -- 63
-- -- 46
-* -- 452
-:= -- 748
-add.period$ -- 33
-call.type$ -- 17
-change.case$ -- 17
-chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 150
-empty$ -- 610
-format.name$ -- 59
-if$ -- 1389
+            863 strings with 11301 characters,
+and the built_in function-call counts, 7587 in all, are:
+= -- 706
+> -- 304
+< -- 6
++ -- 116
+- -- 93
+* -- 639
+:= -- 1074
+add.period$ -- 42
+call.type$ -- 23
+change.case$ -- 23
+chr.to.int$ -- 3
+cite$ -- 25
+duplicate$ -- 206
+empty$ -- 812
+format.name$ -- 111
+if$ -- 1908
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 16
-newline$ -- 76
-num.names$ -- 19
-pop$ -- 85
+int.to.str$ -- 23
+missing$ -- 22
+newline$ -- 99
+num.names$ -- 25
+pop$ -- 131
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 354
+skip$ -- 464
 stack$ -- 0
-substring$ -- 289
-swap$ -- 55
-text.length$ -- 3
+substring$ -- 341
+swap$ -- 71
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 40
-width$ -- 19
-write$ -- 179
-(There were 5 error messages)
+while$ -- 51
+width$ -- 25
+write$ -- 236
+(There were 2 warnings)
