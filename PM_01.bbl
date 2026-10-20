@@ -18,27 +18,6 @@ M.~Aldheeb, W.~Asrar, E.~Sulaeman, A.~A. Omar, Aerodynamics of porous airfoils
 \newblock \href {https://doi.org/10.1007/s00707-018-2203-6}
   {\path{doi:10.1007/s00707-018-2203-6}}.
 
-\bibitem{Hajian2017PorosityGradients}
-R.~Hajian, J.~W. Jaworski, The steady aerodynamics of aerofoils with porosity
-  gradients, Proceedings of the Royal Society A: Mathematical, Physical and
-  Engineering Sciences 473~(2205) (2017) 20170266.
-\newblock \href {https://doi.org/10.1098/rspa.2017.0266}
-  {\path{doi:10.1098/rspa.2017.0266}}.
-
-\bibitem{Luesutthiviboon2019ThinAirfoilAssessment}
-S.~Luesutthiviboon, F.~Avallone, D.~Ragni, M.~Snellen, Assessment of the
-  thin-airfoil method for predicting steady pressure distribution on
-  partially-porous airfoils, in: 25th {AIAA}/{CEAS} aeroacoustics conference,
-  2019.
-\newblock \href {https://doi.org/10.2514/6.2019-2647}
-  {\path{doi:10.2514/6.2019-2647}}.
-
-\bibitem{Baddoo2021UnsteadyPorousAerofoils}
-P.~J. Baddoo, R.~Hajian, J.~W. Jaworski, Unsteady aerodynamics of porous
-  aerofoils, Journal of Fluid Mechanics 913 (2021) A16.
-\newblock \href {https://doi.org/10.1017/jfm.2020.1031}
-  {\path{doi:10.1017/jfm.2020.1031}}.
-
 \bibitem{Hanna2019PorosityModerateRe}
 Y.~G.~T. Hanna, G.~R. Spedding, Aerodynamic performance improvements due to
   porosity in wings at moderate {Re}, in: {AIAA} aviation 2019 forum, 2019.
@@ -58,6 +37,27 @@ J.~Li, K.~Nagata, T.~Watanabe, Large-eddy simulation of low-reynolds-number
   1998--2009.
 \newblock \href {https://doi.org/10.2514/1.C037253}
   {\path{doi:10.2514/1.C037253}}.
+
+\bibitem{Hajian2017PorosityGradients}
+R.~Hajian, J.~W. Jaworski, The steady aerodynamics of aerofoils with porosity
+  gradients, Proceedings of the Royal Society A: Mathematical, Physical and
+  Engineering Sciences 473~(2205) (2017) 20170266.
+\newblock \href {https://doi.org/10.1098/rspa.2017.0266}
+  {\path{doi:10.1098/rspa.2017.0266}}.
+
+\bibitem{Baddoo2021UnsteadyPorousAerofoils}
+P.~J. Baddoo, R.~Hajian, J.~W. Jaworski, Unsteady aerodynamics of porous
+  aerofoils, Journal of Fluid Mechanics 913 (2021) A16.
+\newblock \href {https://doi.org/10.1017/jfm.2020.1031}
+  {\path{doi:10.1017/jfm.2020.1031}}.
+
+\bibitem{Luesutthiviboon2019ThinAirfoilAssessment}
+S.~Luesutthiviboon, F.~Avallone, D.~Ragni, M.~Snellen, Assessment of the
+  thin-airfoil method for predicting steady pressure distribution on
+  partially-porous airfoils, in: 25th {AIAA}/{CEAS} aeroacoustics conference,
+  2019.
+\newblock \href {https://doi.org/10.2514/6.2019-2647}
+  {\path{doi:10.2514/6.2019-2647}}.
 
 \bibitem{Acarer2020DU12W262PassiveFlow}
 S.~Acarer, Peak lift-to-drag ratio enhancement of the {DU12W262} airfoil by

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.24)  1 OCT 2026 12:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.7.24)  16 OCT 2026 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1235,7 +1235,7 @@ File: figs/model3_combined.png Graphic file (type png)
 Package pdftex.def Info: figs/model3_combined.png  used on input line 397.
 (pdftex.def)             Requested size: 190.60437pt x 64.89946pt.
 
-Overfull \hbox (1.51572pt too wide) in paragraph at lines 441--447
+Overfull \hbox (1.51572pt too wide) in paragraph at lines 442--448
 \T1/stix/m/n/10 co-ef-fi-cients. The freestream vec-tor is $[][] \LS1/stix/m/n/
 10 = \LS1/stix/m/it/10 V[]\LS1/stix/m/n/10 .[] \LS1/stix/m/it/10 ; [] \LS1/st
 ix/m/n/10 /$\T1/stix/m/n/10 .
@@ -1243,34 +1243,29 @@ ix/m/n/10 /$\T1/stix/m/n/10 .
 
 [3 <./figs/model1_horizontal.png> <./figs/model2_vertical.png> <./figs/model3_c
 ombined.png>]
-Underfull \hbox (badness 1009) in paragraph at lines 543--552
+Underfull \hbox (badness 1009) in paragraph at lines 545--554
 \T1/stix/m/n/10 Here, $\LS1/stix/m/it/10 p[]$ \T1/stix/m/n/10 and $\LS1/stix/m/
 it/10 p[]$ \T1/stix/m/n/10 are the av-er-aged pres-sures at the
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 543--552
+Underfull \hbox (badness 1383) in paragraph at lines 545--554
 \T1/stix/m/n/10 as-so-ci-ated with ex-ter-nal flow par-al-lel to the sur-face i
 s
  []
 
 
-Overfull \hbox (12.60553pt too wide) in paragraph at lines 574--580
-[]$ \T1/stix/m/n/10 is the pre-scribed switch-ing Reynolds
+Underfull \hbox (badness 1043) in paragraph at lines 576--582
+[]$ \T1/stix/m/n/10 is the pre-scribed switch-ing Reynolds num-ber. No
  []
 
 
-Underfull \hbox (badness 1147) in paragraph at lines 574--580
-\T1/stix/m/n/10 num-ber. No blend-ing is ap-plied, and phys-i-cal laminar--
- []
-
-
-Underfull \hbox (badness 1406) in paragraph at lines 603--609
+Underfull \hbox (badness 1406) in paragraph at lines 605--611
 []\T1/stix/m/n/10 The panel equa-tions are lin-ear for pre-scribed pore-
  []
 
 [4] [5]
-Overfull \hbox (1.02547pt too wide) in paragraph at lines 802--809
+Overfull \hbox (1.02547pt too wide) in paragraph at lines 804--811
 \T1/stix/m/n/10 con-fig-u-ra-tions was in-ves-ti-gated over an angle-of-attack 
 range
  []
@@ -1280,7 +1275,7 @@ range
 File: figs/CL_vs_AoA_three_models_three_diameters.png Graphic file (type png)
 <use figs/CL_vs_AoA_three_models_three_diameters.png>
 Package pdftex.def Info: figs/CL_vs_AoA_three_models_three_diameters.png  used 
-on input line 856.
+on input line 858.
 (pdftex.def)             Requested size: 474.73184pt x 190.17325pt.
 [6]
 <figs/CM_vs_AoA_three_models_three_diameters.png, id=170, 540.72414pt x 211.678
@@ -1288,10 +1283,10 @@ on input line 856.
 File: figs/CM_vs_AoA_three_models_three_diameters.png Graphic file (type png)
 <use figs/CM_vs_AoA_three_models_three_diameters.png>
 Package pdftex.def Info: figs/CM_vs_AoA_three_models_three_diameters.png  used 
-on input line 950.
+on input line 952.
 (pdftex.def)             Requested size: 474.73184pt x 185.84511pt.
  [7 <./figs/CL_vs_AoA_three_models_three_diameters.png>]
-Overfull \hbox (3.62552pt too wide) in paragraph at lines 1040--1048
+Overfull \hbox (3.62552pt too wide) in paragraph at lines 1042--1050
 []\T1/stix/m/n/10 The com-par-i-son is pre-sented us-ing pressure- and velocity
 -
  []
@@ -1302,7 +1297,7 @@ File: figs/pressure_difference_pa_portrait_one_colorbar.png Graphic file (type
 png)
 <use figs/pressure_difference_pa_portrait_one_colorbar.png>
 Package pdftex.def Info: figs/pressure_difference_pa_portrait_one_colorbar.png 
- used on input line 1074.
+ used on input line 1076.
 (pdftex.def)             Requested size: 306.59308pt x 263.33592pt.
 [8 <./figs/CM_vs_AoA_three_models_three_diameters.png>]
 <figs/velocity_difference_percent_portrait_one_colorbar.png, id=189, 441.13608p
@@ -1311,37 +1306,37 @@ File: figs/velocity_difference_percent_portrait_one_colorbar.png Graphic file (
 type png)
 <use figs/velocity_difference_percent_portrait_one_colorbar.png>
 Package pdftex.def Info: figs/velocity_difference_percent_portrait_one_colorbar
-.png  used on input line 1147.
+.png  used on input line 1149.
 (pdftex.def)             Requested size: 306.59308pt x 263.30124pt.
  [9 <./figs/pressure_difference_pa_portrait_one_colorbar.png>]
 LaTeX Font Info:    Trying to load font information for TS1+stix on input line 
-1242.
+1244.
 
 (C:\Users\s358959\AppData\Local\Programs\MiKTeX\tex/latex/stix\ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-Underfull \hbox (badness 1400) in paragraph at lines 1259--1263
+Underfull \hbox (badness 1400) in paragraph at lines 1261--1265
 []\T1/stix/m/n/10 The lift en-hance-ment pro-duced by the hor-i-zon-tal
  []
 
 [10{C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/stix/stix-ts
 1.enc} <./figs/velocity_difference_percent_portrait_one_colorbar.png>]
-Underfull \hbox (badness 1460) in paragraph at lines 1277--1282
+Underfull \hbox (badness 1460) in paragraph at lines 1279--1284
 \T1/stix/m/n/10 strongest aero-dy-namic mod-i-fi-ca-tions oc-cur lo-cally
  []
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 1316--1320
+Underfull \hbox (badness 1609) in paragraph at lines 1318--1322
 []\T1/stix/m/n/10 investigating se-lected con-fig-u-ra-tions us-ing higher-
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 1316--1320
+Underfull \hbox (badness 1072) in paragraph at lines 1318--1322
 \T1/stix/m/n/10 nam-ics that can-not be rep-re-sented by the present
  []
 
 
-Overfull \hbox (9.05556pt too wide) in paragraph at lines 1324--1327
+Overfull \hbox (9.05556pt too wide) in paragraph at lines 1326--1329
 []\T1/stix/m/n/10 extending the anal-y-sis to-wards three-dimensional porous
  []
 
@@ -1382,7 +1377,7 @@ rm-bold.pfb><C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 stix/stix-mathrm.pfb><C:/Users/s358959/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/stix/stix-mathscr-bold.pfb><C:/Users/s358959/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on PM_01.pdf (12 pages, 4358912 bytes).
+Output written on PM_01.pdf (12 pages, 4358918 bytes).
 PDF statistics:
  411 PDF objects out of 1000 (max. 8388607)
  96 named destinations out of 1000 (max. 500000)
