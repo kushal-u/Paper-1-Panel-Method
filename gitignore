@@ -1,0 +1,59 @@
+# LaTeX auxiliary and build files
+*.aux
+*.abs
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.fff
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.ttt
+*.xdv
+
+# LaTeX temporary files
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+*.spl
+*.loa
+*.lol
+*.loe
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# Generated manuscript PDF (keep documentation PDFs)
+/PM_01.pdf
+
+# Build directories
+/build/
+/out/
+
+# Editor backups and settings
+*~
+*.bak
+*.swp
+*.swo
+*.tmp
+*.autosave
+*.tex~
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
