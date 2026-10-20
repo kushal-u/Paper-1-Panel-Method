@@ -8,5 +8,8 @@
 !/*.tex
 !/*.pdf
 
+!/*.bib
+!/.gitattributes
+
 # Keep all folders and their contents
 !/*/
