@@ -27,6 +27,8 @@
 %\usepackage[authoryear]{natbib}
 \usepackage[numbers]{natbib}
 
+\usepackage{comment}
+
 % ------------------------------------------------------------
 % Figures and TikZ
 % ------------------------------------------------------------
@@ -137,11 +139,18 @@
 	\ead{k.kushalumamahesh.959@cranfield.ac.uk}
 	
 	\author[1]{Clément Gicquel}
-	\author[1]{Tamás Józsa}
-	\author[1]{ Drewan Sanders}
+	\author[1]{Tam\'{a}s Istv\'{a}n J\'{o}zsa}
+	\author[2]{ Drewan Sanders}
 	
 	\affiliation[1]{
 		organization={Centre for Assured and Connected Autonomy, Faculty of Engineering and Applied Sciences, Cranfield University},
+		city={Cranfield},
+		postcode={MK43 0AL},
+		state={Bedfordshire},
+		country={United Kingdom}
+	}
+	\affiliation[2]{
+		organization={Centre for Propulsion and Thermal Power Engineering, Faculty of Engineering and Applied Sciences, Cranfield University},
 		city={Cranfield},
 		postcode={MK43 0AL},
 		state={Bedfordshire},
@@ -188,15 +197,34 @@
 	
 	\section{Introduction}
 	\label{sec:introduction}
+
+Porous wings first attracted attention due to their favourable acoustic properties \cite{}.
+More recently, airfoils with anisotropic permeability have been considered for aerodynamic benefits including lift and efficiency enhancement \cite{}.
+Due to the multi-scale nature of these flows, the design of porous wings remains challenging.
+This study sets out to address this issue based on a computationally cheap, extended panel method formulation.
+\begin{comment}
+Improving airfoil performance without relying on powered control systems remains an important objective in aerospace and energy applications.
+Conventional high-lift and flow-control devices can be effective, but they may introduce mechanical complexity, additional mass, maintenance requirements, and changes that disrupt the smooth external surface of the airfoil.
+Passive flow-control concepts provide an alternative strategy in which natural pressure differences around an aerodynamic body drive flow redistribution.
+Porous surfaces, permeable regions, localised pores, and internal channels employ this principle by permitting fluid transport between regions of unequal pressure.
+Their effectiveness, however, depends on pore placement, the connections between pores, and the strength of the interaction between the resulting surface-normal flow and the external aerodynamic field.
+\end{comment}
 	
-	Improving airfoil performance without relying on powered control systems remains an important objective in aerospace and energy applications. Conventional high-lift and flow-control devices can be effective, but they may introduce mechanical complexity, additional mass, maintenance requirements, and changes that disrupt the smooth external surface of the airfoil. Passive flow-control concepts provide an alternative strategy in which natural pressure differences around an aerodynamic body drive flow redistribution. Porous surfaces, permeable regions, localised pores, and internal channels employ this principle by permitting fluid transport between regions of unequal pressure. Their effectiveness, however, depends on pore placement, the connections between pores, and the strength of the interaction between the resulting surface-normal flow and the external aerodynamic field. 
+Isotropic porous airfoils were found to reduce lift and increase or decrease drag compared to solid airfoils \cite{Mineck1996FullChordPorosity,Aldheeb2018PorousAirfoilsWings}.
+Experiments and numerical studies showed that performance depends on the location of the porous region and the permitted internal flow directions \cite{Hanna2019PorosityModerateRe,Zhu2023NACA0018PorousTrailingEdge,Li2023PartiallyPorousAirfoils}. These findings motivate the usage of anisotropic and heterogeneous pore configurations which this study focuses on.
+
+\begin{comment}
+For an airfoil containing individual channels, the aerodynamic effect depends on which pressure regions are connected.
+A channel connecting pores on the same airfoil surface transfers fluid between different chordwise locations, whereas a channel connecting the pressure and suction surfaces permits flow between the two sides of the airfoil.
+These arrangements can produce different changes in surface pressure even when their pore areas are similar.
+Consequently, porosity alone does not specify the design: channel connectivity and resistance must also be represented.
+This distinction is particularly relevant when several channels operate simultaneously, because their influence on the external pressure field can alter the flow through neighbouring channels.
+\end{comment}
 	
-	Porosity does not necessarily improve aerodynamic performance. Porosity extending along the entire airfoil chord, as well as other distributed porous arrangements, can reduce the rate of lift increase with angle of attack and produce competing effects on drag \cite{Mineck1996FullChordPorosity,Aldheeb2018PorousAirfoilsWings}. Experiments and numerical studies further show that performance depends on the location of the porous region and the permitted internal flow directions \cite{Hanna2019PorosityModerateRe,Zhu2023NACA0018PorousTrailingEdge,Li2023PartiallyPorousAirfoils}. These findings motivate the use of selectively connected pores to control pressure redistribution.
 	
-	For an airfoil containing individual channels, the aerodynamic effect depends on which pressure regions are connected. A channel connecting pores on the same airfoil surface transfers fluid between different chordwise locations, whereas a channel connecting the pressure and suction surfaces permits flow between the two sides of the airfoil. These arrangements can produce different changes in surface pressure even when their pore areas are similar. Consequently, porosity alone does not specify the design: channel connectivity and resistance must also be represented. This distinction is particularly relevant when several channels operate simultaneously, because their influence on the external pressure field can alter the flow through neighbouring channels.
-	
-	
-	Thin-airfoil models describe steady and unsteady porous-airfoil behaviour by relating pressure differences to flow through distributed permeability \cite{Hajian2017PorosityGradients,Baddoo2021UnsteadyPorousAerofoils}, although accuracy can decrease for small porous regions or low flow resistance \cite{Luesutthiviboon2019ThinAirfoilAssessment}. These formulations provide efficient aerodynamic predictions but do not explicitly resolve airfoil thickness or finite-length channels connecting selected surface pores. Their local porous boundary conditions are useful for distributed permeable surfaces, whereas modelling individual channels requires the pressure at each connected pore and a relation between pressure difference, channel geometry, and flow rate.
+Thin-airfoil models describe steady and unsteady porous-airfoil behaviour by relating pressure differences to flow through distributed permeability \cite{Hajian2017PorosityGradients,Baddoo2021UnsteadyPorousAerofoils}, although accuracy can decrease for small porous regions or low flow resistance \cite{Luesutthiviboon2019ThinAirfoilAssessment}.
+These formulations provide efficient aerodynamic predictions but do not explicitly resolve airfoil thickness or finite-length channels connecting selected surface pores.
+Their local porous boundary conditions are useful for distributed permeable surfaces, whereas modelling individual channels requires the pressure at each connected pore and a relation between pressure difference, channel geometry, and flow rate.
 	
 	Passive internal connections have already been investigated for aerodynamic control. Acarer reported improved peak lift-to-drag ratio using passive slots \cite{Acarer2020DU12W262PassiveFlow}, while Kestel et al. modified separated vortex flow through passive internal channels \cite{Kestel2020PassiveBleeding}. Bahadi et al. examined curved slots for improved performance at high angles of attack \cite{Bahadi2026CurvedPassiveSlot}. These studies establish the potential of pressure-driven internal flow. The present work builds on this principle by developing a general reduced-order framework for multiple pairs of pores connected by independent channels, enabling different arrangements to be evaluated consistently.
 	
@@ -207,8 +235,11 @@
 	Although the panel equations are linear for prescribed pore velocities, the complete aero--hydraulic problem is generally nonlinear. Surface pressure depends quadratically on velocity, and changing the channel flow changes both the pore velocities and the pressures driving that flow. This feedback requires a consistent coupled solution even when a linear laminar hydraulic-resistance relation is used. Treating channel flow as a fixed input would omit this interaction. The present framework instead updates the internal flow and external pressures until the coupled equations satisfy the prescribed convergence criterion.
 	
 	Established viscous--inviscid methods combine an outer-flow solution with boundary-layer equations to represent additional aerodynamic effects \cite{DrelaGiles1987ViscousInviscid}. XFOIL uses this approach with a panel-based inviscid solution and transition modelling \cite{Drela1989XFOIL}. Here, the external solver remains inviscid to isolate the aero--hydraulic interaction at low computational cost, and XFOIL provides a reference for the solid-airfoil baseline. This comparison assesses the external aerodynamic calculation; validation of the coupled porous model requires separate evidence for the internal flow and its interaction with the surrounding fluid.
-	
-	The present study addresses the need for a reduced-order framework that explicitly represents finite-length channels between selected pairs of pores and couples their pressure-driven flow to the external aerodynamic solution. A two-dimensional source--vortex panel method with a Kutta condition is coupled iteratively to a hydraulic-resistance model for rectangular channels. Three NACA~0018 configurations are examined: four chordwise same-surface channels, four pressure-to-suction-surface channels, and a combined arrangement containing eight hydraulically independent channels. Channel heights of 8, 9, and 10~mm are assessed over angles of attack from $-5^{\circ}$ to $15^{\circ}$ at a chord Reynolds number of $5\times10^{5}$.
+
+In summary, anisotropic and heterogeneous pore configurations are considered rarely even though the most recent studies suggest that these offer aerodynamic benefits.
+Here, a reduced-order framework is proposed to capture the flow field in such scenarios.
+To this end, a two-dimensional panel method for the external flow field is coupled to a hydraulic-resistance-based model representing the pores.
+Three NACA~0018 configurations are examined: four chordwise same-surface channels, four pressure-to-suction-surface channels, and a combined arrangement containing eight hydraulically independent channels. Channel heights of 8, 9, and 10~mm are assessed over angles of attack from $-5^{\circ}$ to $15^{\circ}$ at a chord Reynolds number of $5\times10^{5}$.
 	
 	The combined arrangement permits the aerodynamic interaction between channel types to be assessed without introducing internal junctions. Although each channel is hydraulically independent, all channels influence a shared external pressure field. Comparing the three configurations therefore examines how their effects combine and whether connectivity changes the sensitivity to channel height and angle of attack.
 	
