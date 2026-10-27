@@ -26,7 +26,7 @@
 %\usepackage[authoryear,longnamesfirst]{natbib}
 %\usepackage[authoryear]{natbib}
 \usepackage[numbers]{natbib}
-
+\usepackage{parskip}
 %\usepackage{comment}
 \usepackage{etoolbox}
 \preto\comment{\leavevmode}
@@ -175,10 +175,42 @@
 	
 	
 	
-	\begin{abstract}
-	Passive, pressure-driven flow between connected surface pores can modify aerodynamic forces without external actuation. This study develops a reduced-order aerodynamic–hydraulic framework for a NACA 0018 airfoil by coupling an inviscid source–vortex panel method with rectangular-channel flow models. Three configurations are investigated: horizontal channels connecting chordwise locations on the same surface, vertical channels connecting the lower and upper surfaces, and a combined arrangement of hydraulically independent channels. Aerodynamic coefficients are obtained by integrating the predicted surface pressure. At positive angles of attack, horizontal channels increase lift through pressure redistribution, with larger channel heights producing greater increases in lift. Vertical channels reduce the pressure difference between the two surfaces and decrease lift relative to the impermeable baseline. In the combined configuration, the channels interact through the external pressure field, yielding a response closer to that of the solid airfoil. Pressure and velocity difference fields show that the strongest flow modifications occur near the pore openings. These results identify channel orientation and pore connections as key factors governing the aerodynamic response of porous airfoils. The framework supports preliminary design screening and provides inviscid predictions for subsequent assessment using viscous simulations and experiments.
-	
-	\end{abstract}
+
+\begin{abstract}
+	Passive flow between connected surface pores can modify aerodynamic forces without requiring additional power input.
+	This study develops a reduced-order aero--hydraulic framework for anisotropic and heterogeneous porous airfoils.
+	Anisotropy is represented by the permitted internal flow
+	directions, while heterogeneity is represented by the
+	distribution of surface pores and impermeable regions.
+	The framework couples an inviscid source--vortex panel method
+	with rectangular-channel flow relations.
+	It is applied to a NACA~0018 airfoil with three layouts:
+	horizontal channels connecting chordwise locations on the
+	same surface, vertical channels connecting the lower and
+	upper surfaces, and a combined arrangement.
+	The channels are hydraulically independent and interact
+	through the external pressure field.
+	Aerodynamic coefficients are calculated by integrating
+	the predicted surface pressures.
+	Horizontal channels redistribute surface pressure and
+	increase lift at positive angles of attack.
+	Larger channel heights produce greater lift increases
+	for the cases examined.
+	Vertical channels reduce the pressure difference between
+	the two surfaces and decrease lift relative to the
+	impermeable baseline.
+	The combined layout produces a response closer to the
+	impermeable baseline.
+	Predicted pressure and velocity changes are concentrated
+	near the openings.
+	These findings highlight the importance of channel
+	orientation and pore connectivity in determining the
+	inviscid aerodynamic response.
+	The framework supports preliminary design screening
+	and provides predictions for subsequent assessment
+	using viscous simulations and experiments.
+\end{abstract}
+
 	
 	%%%	\begin{graphicalabstract}
 		
@@ -190,9 +222,11 @@
 		%%%		\item Research highlights item 3
 		%%%	\end{highlights}
 	
-	\begin{keywords}
-		Porous airfoil \sep Passive flow control \sep Panel method \sep Pressure-driven internal flow \sep Anisotropic porosity \sep 
-	\end{keywords}
+\begin{keywords}
+Porous airfoils \sep Anisotropic permeability \sep
+Heterogeneous permeability \sep Passive flow control \sep
+Source--vortex panel method \sep Aero--hydraulic coupling
+\end{keywords}
 	
 	
 	\maketitle
@@ -405,8 +439,7 @@ The linearity of Laplace's equation allows the external flow to be represented b
 
 The airfoil boundary is discretised into $N$ straight panels, ordered clockwise.
 Boundary conditions are imposed at the panel midpoints.
-Each panel carries a constant source strength $\lambda_j$.
-A uniform vortex-sheet strength $\gamma$ is shared by all panels and permits nonzero circulation.
+Each panel carries a constant source strength $\lambda_j$ and a uniform vortex-sheet strength $\gamma$ is shared by all panels.
 This follows the source--vortex panel formulation \cite{HessSmith1967PotentialFlow,Hess1990PanelMethods}.
 
 The total external velocity at position $\mathbf{r}$ is
@@ -473,16 +506,43 @@ For the adopted boundary ordering,
 where panels 1 and $N$ meet at the trailing edge.
 Together, these equations determine the source and vortex strengths.
 
-For $M$ channels, the flow vector is $\mathbf{q}=[q'_1,\ldots,q'_M]^T$, where $q'_k$ is the flow rate per unit span through
-channel $k$.
-The prescribed normal velocities satisfy
+Each channel connects two openings on the airfoil surface.
+For $M$ channels, the signed flow rates per unit span
+are collected in $\mathbf{q}=[q'_1,\ldots,q'_M]^T$.
+Positive $q'_k$ produces suction at opening 1 and
+blowing at opening 2.
+
+An opening may cover all or part of several panels.
+Let $\ell_{i,k,a}$ denote the length of opening
+$a\in\{1,2\}$ of channel $k$ within panel $i$.
+Its total length is $\ell_{k,a}=\sum_i\ell_{i,k,a}$,
+and the full panel length is $S_i$.
+For an oblique opening, the surface opening length
+can differ from the channel height $H_k$.
+
+Uniform normal velocity is prescribed over each opening
+and averaged over each full panel.
+The resulting panel-normal velocities are
 \begin{equation}
-	\mathbf{V}_n=\mathbf{M}\mathbf{q},
+	\mathbf{V}_n=\mathbf{G}\mathbf{q},
 	\label{eq:normal_velocity_map}
 \end{equation}
-where $\mathbf{M}$ is the conservative transfer operator defined in Section~\ref{subsec:interface_transfer}.
+where the $N\times M$ transfer matrix has entries
+\begin{equation}
+	G_{ik}
+	=
+	\frac{1}{S_i}
+	\left(
+	\frac{\ell_{i,k,2}}{\ell_{k,2}}
+	-
+	\frac{\ell_{i,k,1}}{\ell_{k,1}}
+	\right).
+	\label{eq:opening_transfer_operator}
+\end{equation}
+This mapping accounts for partially covered panels
+and conserves the flow through each opening.
 
-The aerodynamic unknowns are collected in 
+The aerodynamic unknowns are collected in
 $\mathbf{x}=[\lambda_1,\ldots,\lambda_N,\gamma]^T$.
 Multiplying the normal-velocity and Kutta equations
 by $2\pi$ gives
@@ -494,20 +554,27 @@ by $2\pi$ gives
 	\mathbf{B}
 	=
 	\begin{bmatrix}
-		2\pi\mathbf{M}\\
+		2\pi\mathbf{G}\\
 		\mathbf{0}_{1\times M}
 	\end{bmatrix}.
 	\label{eq:aero_matrix}
 \end{equation}
-The matrix $\mathbf{A}$ contains the panel influence coefficients and the Kutta equation.
-The vector $\mathbf{b}_{\infty}$ contains the freestream contributions.
-The zero final row of $\mathbf{B}$ indicates that channel flow does not directly enter the right-hand side of the Kutta equation.
+The matrix $\mathbf{A}$ contains the panel influence
+coefficients and the Kutta equation.
+The terms $\mathbf{b}_{\infty}$ and $\mathbf{B}\mathbf{q}$
+represent the freestream and channel-flow contributions,
+respectively.
+The final row of $\mathbf{B}$ is zero because channel
+flow does not directly enter the Kutta condition.
 
-For prescribed channel flows, the aerodynamic system is linear. 
-It is solved using an LU factorisation, which is reused for a fixed panel geometry.
-The resulting source and vortex strengths give the tangential velocities through Eq.~\eqref{eq:tangential_panel_velocity}.
+For prescribed channel flows, this system is linear.
+An LU factorisation of $\mathbf{A}$ is reused for
+a fixed panel geometry.
+The resulting source and vortex strengths give
+the tangential velocities through
+Eq.~\eqref{eq:tangential_panel_velocity}.
 
-Bernoulli's equation gives the pressure coefficient from the total local speed
+Bernoulli's equation gives the pressure coefficient
 \cite{KatzPlotkin2001LowSpeedAerodynamics}:
 \begin{equation}
 	C_{p,i}
@@ -515,10 +582,28 @@ Bernoulli's equation gives the pressure coefficient from the total local speed
 	1-\frac{V_{t,i}^{2}+V_{n,i}^{2}}{V_{\infty}^{2}}.
 	\label{eq:pressure_coefficient}
 \end{equation}
-Both velocity components are retained because the normal velocity can be nonzero at a pore opening.
-The panel pressure follows from
+Both velocity components are retained because
+the normal velocity can be nonzero at an opening.
+The panel pressure is then
 $p_i=p_{\infty}+\tfrac{1}{2}\rho V_{\infty}^{2}C_{p,i}$.
 
+The hydraulic model uses the mean pressure over each
+opening. Pressure is linearly interpolated between
+panel centres on the same surface and held constant
+beyond the first and last centres.
+The mean opening pressure is
+\begin{equation}
+	\overline{p}_{k,a}
+	=
+	\frac{1}{\ell_{k,a}}
+	\int_{\text{opening}}p(s)\,\mathrm{d}s,
+	\label{eq:opening_pressure_average}
+\end{equation}
+where $s$ is surface arc length and $p(s)$ is
+the interpolated pressure.
+The squared panel-normal velocities are interpolated
+and averaged in the same way to calculate
+the inlet normal kinetic head.
 
 \subsection{Internal hydraulic model}
 \label{subsec:internal_hydraulics}
@@ -564,8 +649,8 @@ For fixed geometry and fluid properties, the laminar
 frictional loss is therefore linear in the flow-rate
 magnitude.
 
-The frictional pressure drop is expressed more generally
-using the Darcy--Weisbach relation
+For turbulent channel flow, the frictional pressure drop
+is calculated using the Darcy--Weisbach relation
 \cite{Moody1944FrictionFactors}:
 \begin{equation}
 	\Delta p_{f,k}
@@ -576,232 +661,128 @@ using the Darcy--Weisbach relation
 	\label{eq:friction_drop}
 \end{equation}
 where $f_{D,k}$ is the Darcy friction factor.
-For parallel-wall laminar flow,
-$f_{D,k}=96/Re_{h,k}$.
-Substitution into Eq.~\eqref{eq:friction_drop}
-recovers Eq.~\eqref{eq:laminar_pressure_flow}.
-
-A two-regime closure is adopted.
-The laminar relation is used for $Re_{h,k}\leq2300$.
-Above this threshold, the smooth-pipe Blasius correlation
-is applied using the hydraulic diameter
-\cite{Moody1944FrictionFactors}:
+The smooth-pipe Blasius correlation is used:
 \begin{equation}
 	f_{D,k}
 	=
-	\begin{cases}
-		\displaystyle \frac{96}{Re_{h,k}},
-		& 0<Re_{h,k}\leq2300,\\[6pt]
-		\displaystyle 0.3164Re_{h,k}^{-1/4},
-		& Re_{h,k}>2300.
-	\end{cases}
+	0.3164Re_{h,k}^{-1/4}.
 	\label{eq:channel_friction_factor}
 \end{equation}
-Applying the Blasius correlation to the parallel-wall
-geometry is an empirical approximation.
-The value 2300 is a prescribed switching threshold.
-No transition correlation or blending function is used.
-The resulting frictional pressure--flow relation is
-discontinuous at the threshold.
+The hydraulic diameter $D_{h,k}=2H_k$ is used to apply
+this correlation to the parallel-wall channel.
+This treatment is an empirical approximation.
 
-At zero flow, $\Delta p_{f,k}$ is set directly to zero.
-This avoids evaluating the singular friction-factor
-expression.
+The turbulent relation is selected for $Re_{h,k}>2300$.
+This threshold is a prescribed modelling choice.
+No transition correlation or blending function is used.
 During hydraulic inversion, the Reynolds number is
 recalculated from the candidate flow.
-A candidate is accepted only when it satisfies the
-channel energy equation and the Reynolds-number
-condition of its selected regime.
-If neither branch provides an admissible solution,
-the inversion is rejected.
+A turbulent solution is accepted only when it satisfies
+the channel energy equation and $Re_{h,k}>2300$.
 
 \subsection{Coupled formulation and nonlinear solution}
 \label{subsec:coupled_solution}
 
-The coupled unknowns are the signed channel flows
-$\mathbf{q}=(q'_1,\ldots,q'_M)^{\mathsf T}$.
-For each channel, the opening with the higher average
-static pressure is selected as the inlet.
-Its normal kinetic head contributes to the driving head.
-Tangential kinetic energy is assumed to dissipate
-during entry.
-
-For a nonzero opening-pressure difference and a uniform
-outlet jet ($\alpha_j=1$), the channel energy balance is
+The opening with the higher average static pressure is selected as the channel inlet.
+For a nonzero opening-pressure difference and a uniform outlet jet, the channel energy balance is
 \begin{equation}
-	\left|\Delta\overline{p}_k\right|
+	\overline{p}_{\mathrm{in},k}
 	+\frac{\rho}{2}
 	\left\langle V_{n,\mathrm{in}}^2\right\rangle
 	=
-	\Delta p_{f,k}(Q_k)
-	+\frac{\rho}{2}
-	\left(\frac{Q_k}{H_k}\right)^2,
+	\overline{p}_{\mathrm{out},k}
+	+\Delta p_{f,k}(Q_k)
+	+\frac{\rho U_k^2}{2},
 	\label{eq:channel_energy_equation}
 \end{equation}
-where
-$\Delta\overline{p}_k=\overline{p}_{k,1}-\overline{p}_{k,2}$
-and $Q_k=|q'_k|$.
-The brackets denote the opening average defined in
-Section~\ref{subsec:interface_transfer}.
-The frictional loss $\Delta p_{f,k}$ follows
-Section~\ref{subsec:internal_hydraulics}.
-The outlet kinetic head is retained separately from
-this loss.
+where $\overline{p}_{\mathrm{in},k}$ and $\overline{p}_{\mathrm{out},k}$ are the mean static pressures at the inlet and outlet.
+The flow magnitude is $Q_k=|q'_k|$, with $|U_k|=Q_k/H_k$.
+The inlet pressure and normal kinetic head balance the outlet pressure, frictional loss and outlet jet kinetic head.
 
-For given opening pressures and inlet normal kinetic head,
-hydraulic inversion determines the predicted flow magnitude.
-Its direction follows the sign of
-$\Delta\overline{p}_k$.
+Solving this equation gives the predicted flow magnitude.
+The static-pressure difference between the two openings sets the flow direction.
 At equal opening pressures, the model prescribes zero flow.
-Entrance turning and downstream jet mixing are not
-resolved explicitly.
 
-For fixed geometry, the linear aerodynamic system in
-Eq.~\eqref{eq:aero_matrix} is reduced before solving
-the channel-flow equations.
-A single LU factorisation of $\mathbf{A}$ is used to obtain
+For each geometry, the aerodynamic matrix is factorised once. 
+The effect of unit flow through each channel is then precomputed.
+The surface velocities are obtained from
 \begin{equation}
-	\mathbf{A}\mathbf{x}_0=\mathbf{b}_{\infty},
-	\qquad
-	\mathbf{A}\mathbf{X}_q=\mathbf{B}.
-	\label{eq:precomputed_aerodynamic_responses}
+	\begin{bmatrix}
+		\mathbf{V}_t\\
+		\mathbf{V}_n
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		\mathbf{V}_{t,0}\\
+		\mathbf{0}
+	\end{bmatrix}
+	+
+	\begin{bmatrix}
+		\mathbf{T}_q\\
+		\mathbf{M}
+	\end{bmatrix}
+	\mathbf{q},
+	\label{eq:reduced_velocity_system}
 \end{equation}
-Here, $\mathbf{x}_0$ is the impermeable-airfoil solution.
-Each column of $\mathbf{X}_q$ gives the change in source
-and vortex strengths caused by unit flow through one channel.
-For any trial flow vector,
-\begin{equation}
-	\mathbf{x}
-	=
-	\mathbf{x}_0+\mathbf{X}_q\mathbf{q}.
-	\label{eq:strength_reconstruction}
-\end{equation}
+where $\mathbf{V}_{t,0}$ is the impermeable-airfoil
+tangential velocity.
+The matrices $\mathbf{T}_q$ and $\mathbf{M}$ give
+the tangential and normal velocity changes caused
+by the channel flows.
+Bernoulli's equation and opening averaging then provide
+the opening pressures and normal kinetic heads.
+All quadratic terms are retained.
+This calculation is exact within the discretised model
+and avoids repeated panel solves.
 
-The surface velocities follow as
-\begin{align}
-	\mathbf{V}_t
-	&=
-	\mathbf{V}_{t,0}+\mathbf{T}_q\mathbf{q},
-	\label{eq:reduced_tangential_velocity}\\
-	\mathbf{V}_n
-	&=
-	\mathbf{M}\mathbf{q},
-	\label{eq:reduced_normal_velocity}
-\end{align}
-where
-$\mathbf{V}_{t,0}=\mathbf{v}_{\infty,t}+\mathbf{C}\mathbf{x}_0$
-and $\mathbf{T}_q=\mathbf{C}\mathbf{X}_q$.
-The matrix $\mathbf{C}$ maps aerodynamic strengths
-to induced tangential velocities.
-The matrix $\mathbf{M}$ transfers channel flows
-to the prescribed normal velocities.
-
-These velocities are linear functions of the channel flows
-plus the impermeable-airfoil contribution.
-Bernoulli's equation therefore gives quadratic panel
-pressures.
-Opening averaging preserves this dependence.
-The opening pressures and normal kinetic heads can thus
-be evaluated using precomputed quadratic coefficients.
-All terms in the discretised pressure relation are retained.
-The reduction avoids repeated panel solves without
-introducing a small-flow approximation.
-
-The remaining nonlinear unknowns are the dimensionless
-channel flows $\mathbf{z}$, defined by
+The channel flows are made dimensionless using
+$z_k=q'_k/(V_{\infty}H_k)$.
+For each trial $\mathbf{z}$, the external model provides
+the opening pressures and inlet kinetic heads.
+The hydraulic model then predicts
+$q'_{\mathrm{hyd},k}(\mathbf{z})$.
+The dimensionless flow mismatch is
 \begin{equation}
-	\mathbf{q}=\mathbf{S}\mathbf{z},
-	\qquad
-	\mathbf{S}
+	R_k(\mathbf{z})
 	=
-	V_{\infty}\operatorname{diag}(H_1,\ldots,H_M).
-	\label{eq:flow_scaling}
-\end{equation}
-For each trial $\mathbf{z}$, the reduced aerodynamic model
-provides the opening pressures and inlet normal kinetic
-heads.
-Hydraulic inversion then gives the predicted flow vector
-$\mathbf{q}_{\mathrm{hyd}}(\mathbf{z})$.
-The coupled residual is
-\begin{equation}
-	\mathbf{R}(\mathbf{z})
-	=
-	\mathbf{z}
-	-
-	\mathbf{S}^{-1}\mathbf{q}_{\mathrm{hyd}}(\mathbf{z})
-	=
-	\mathbf{0}.
+	\frac{q'_k-q'_{\mathrm{hyd},k}(\mathbf{z})}
+	{V_{\infty}H_k},
+	\qquad k=1,\ldots,M.
 	\label{eq:coupled_residual}
 \end{equation}
-All channel flows are solved simultaneously because
-they interact through the external pressure field.
+The coupled solution requires all residuals to vanish.
 
-A damped Newton method solves the residual equations\cite{NocedalWright2006NumericalOptimization}.
-The analytical Jacobian is
+A damped Newton method updates all channel flows
+simultaneously \cite{NocedalWright2006NumericalOptimization}.
+At iteration $n$, the correction satisfies
 \begin{equation}
-	\mathbf{J}_R
+	\begin{bmatrix}
+		J_{11}^{(n)} & \cdots & J_{1M}^{(n)}\\
+		\vdots      & \ddots & \vdots\\
+		J_{M1}^{(n)} & \cdots & J_{MM}^{(n)}
+	\end{bmatrix}
+	\begin{bmatrix}
+		\Delta z_1\\
+		\vdots\\
+		\Delta z_M
+	\end{bmatrix}
 	=
-	\mathbf{I}_M
 	-
-	\mathbf{S}^{-1}
-	\frac{\partial\mathbf{q}_{\mathrm{hyd}}}
-	{\partial\mathbf{z}}.
-	\label{eq:residual_jacobian}
+	\begin{bmatrix}
+		R_1(\mathbf{z}^{(n)})\\
+		\vdots\\
+		R_M(\mathbf{z}^{(n)})
+	\end{bmatrix},
+	\label{eq:newton_system}
 \end{equation}
-It is obtained by differentiating the quadratic aerodynamic
-expressions and implicitly differentiating
-Eq.~\eqref{eq:channel_energy_equation}.
-The hydraulic derivatives include the dependence of
-the friction factor on the channel Reynolds number.
-Derivatives are evaluated within the selected inlet
-and friction branches.
+where $J_{k\ell}=\partial R_k/\partial z_\ell$.
+The Jacobian describes how each residual changes with the channel flows.
+Its off-diagonal entries capture interactions through the external pressure field.
+The derivatives are evaluated analytically within the selected inlet and hydraulic branches.
 
-At iteration $n$, the Newton correction and flow update are
-\begin{align}
-	\mathbf{J}_R(\mathbf{z}^{(n)})
-	\Delta\mathbf{z}
-	&=
-	-\mathbf{R}(\mathbf{z}^{(n)}),
-	\label{eq:newton_system}\\
-	\mathbf{z}^{(n+1)}
-	&=
-	\mathbf{z}^{(n)}
-	+\eta_n\Delta\mathbf{z}.
-	\label{eq:newton_update}
-\end{align}
-Armijo backtracking selects $0<\eta_n\leq1$ using the
-merit function $\tfrac12\|\mathbf{R}\|_2^2$
-\cite{NocedalWright2006NumericalOptimization}.
-The full nonlinear residual is evaluated at every trial
-update, including any changes in inlet or friction branch.
-Ill-conditioned Newton systems are solved in a
-least-squares sense.
-A residual-gradient direction is used when needed
-to obtain descent.
-
-Initial flows are estimated from the impermeable-airfoil
-pressure field or a nearby converged solution.
-If Newton iterations fail to satisfy the residual tolerance,
-a trust-region reflective least-squares method provides
-a fallback \cite{Virtanen2020SciPy}.
-It uses the same residual and analytical Jacobian.
-A least-squares termination flag alone does not establish
-a coupled solution.
-
-Parameter sweeps may additionally use adaptive
-angle-of-attack continuation, Reynolds-number continuation,
-coupling homotopy and pseudo-arclength continuation
-\cite{AllgowerGeorg2003NumericalContinuation}.
-These procedures provide starting estimates for the
-requested operating point.
-Final acceptance uses a full panel solve and the original
-hydraulic model.
-The flow residual and channel energy errors must satisfy
-the prescribed tolerances.
-The flow direction and hydraulic regime must also be
-admissible.
-Only solutions at the requested operating conditions
-and full aero--hydraulic coupling are accepted.
+Initial flows are estimated from the impermeable-airfoil pressure field or nearby converged solutions.
+Final candidates are verified using a full panel solve and the original hydraulic model.
+Acceptance requires the flow residual, energy balance, flow direction and hydraulic regime checks to be satisfied at the requested operating point and full coupling.
 
 
 \subsection{Verification and aerodynamic coefficients}
@@ -864,10 +845,7 @@ coefficient about $(x_{\mathrm{ref}},y_{\mathrm{ref}})$ is
 	\label{eq:moment_coefficient}
 \end{equation}
 
-These coefficients represent integrated pressure loads
-over the discretised panel boundary. They exclude
-viscous shear and an explicit additional pore
-momentum-flux reaction.
+These coefficients represent integrated pressure loads over the discretised panel boundary.
 	
 	\section{Results and discussion}
 	\label{sec:results_discussion}
